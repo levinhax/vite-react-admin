@@ -19,11 +19,11 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
-        // globalVars: {
-        // 	hack: `true; @import (reference) "${resolve(
-        // 		'src/assets/styles/variable.less'
-        // 	)}";@import (reference) "${resolve('src/assets/styles/mixin.less')}";`
-        // }
+        globalVars: {
+        	hack: `true; @import (reference) "${resolve(
+        		'src/styles/variable.less'
+        	)}";@import (reference) "${resolve('src/styles/mixin.less')}";`
+        }
       },
     },
   },
