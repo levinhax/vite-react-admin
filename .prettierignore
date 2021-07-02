@@ -16,3 +16,4 @@ package.json
 .prettierignore
 yarn-error.log
 CHANGELOG.md
+vite.config.ts

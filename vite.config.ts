@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 
-// import path from 'path'
+import path from 'path'
+
+const resolve = dir => path.resolve(process.cwd(), dir)
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,15 +16,20 @@ export default defineConfig({
     // include: ['react', 'react-dom', 'antd'],
   },
   css: {
-		preprocessorOptions: {
-			less: {
-				javascriptEnabled: true,
-				// globalVars: {
-				// 	hack: `true; @import (reference) "${resolve(
-				// 		'src/assets/styles/variable.less'
-				// 	)}";@import (reference) "${resolve('src/assets/styles/mixin.less')}";`
-				// }
-			}
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        // globalVars: {
+        // 	hack: `true; @import (reference) "${resolve(
+        // 		'src/assets/styles/variable.less'
+        // 	)}";@import (reference) "${resolve('src/assets/styles/mixin.less')}";`
+        // }
+      },
+    },
+  },
+  resolve: {
+		alias: {
+			'@': resolve('src')
 		}
-	},
+	}
 })
