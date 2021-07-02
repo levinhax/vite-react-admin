@@ -3,3 +3,4 @@ build
 dist
 **/*.d.ts
 src/assets
+vite.config.ts

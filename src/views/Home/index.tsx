@@ -1,5 +1,6 @@
 import './index.css'
 
+import { Button } from 'antd'
 import React, { useState } from 'react'
 
 import logo from '../../assets/svg/logo.svg'
@@ -12,6 +13,7 @@ function Home() {
       <header className="Home-header">
         <img src={logo} className="Home-logo" alt="logo" />
         <p>Hello Vite + React!</p>
+        <Button type="primary">Primary Button</Button>
         <p>
           <button type="button" onClick={() => setCount(count => count + 1)}>
             count is: {count}
