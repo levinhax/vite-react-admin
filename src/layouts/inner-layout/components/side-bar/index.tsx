@@ -2,6 +2,7 @@ import './style.less'
 
 import { Menu } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { Scrollbars } from 'react-custom-scrollbars'
 import { Link, useLocation } from 'react-router-dom'
 
 import Icon from '@/components/custom-svg-icon'
@@ -17,17 +18,17 @@ interface IProps {
 /**
  * 侧边菜单
  */
-// const renderThumb = (props: any) => {
-//   const { style, ...rest } = props
+const renderThumb = (props: any) => {
+  const { style, ...rest } = props
 
-//   const thumbStyle: React.CSSProperties = {
-//     backgroundColor: 'rgba(255,255,255,.2)',
-//     borderRadius: '3px',
-//     cursor: 'pointer',
-//   }
+  const thumbStyle: React.CSSProperties = {
+    backgroundColor: 'rgba(255,255,255,.2)',
+    borderRadius: '3px',
+    cursor: 'pointer',
+  }
 
-//   return <div style={{ ...style, ...thumbStyle }} {...rest} />
-// }
+  return <div style={{ ...style, ...thumbStyle }} {...rest} />
+}
 
 const SiderBar: React.FC<IProps> = ({ routeMap }) => {
   const location = useLocation()
@@ -62,19 +63,20 @@ const SiderBar: React.FC<IProps> = ({ routeMap }) => {
   }
 
   return (
-    // <Scrollbars renderThumbHorizontal={renderThumb} renderThumbVertical={renderThumb}></Scrollbars>
-    <div className="side-bar">
-      <div className="side-bar__logo">
-        <Link to="/dashboard">
-          <img className="image" src={logo} alt="" />
-          <div className="title">管理系统</div>
-        </Link>
-      </div>
+    <Scrollbars renderThumbHorizontal={renderThumb} renderThumbVertical={renderThumb}>
+      <div className="side-bar">
+        <div className="side-bar__logo">
+          <Link to="/dashboard">
+            <img className="image" src={logo} alt="" />
+            <div className="title">管理系统</div>
+          </Link>
+        </div>
 
-      <Menu theme="dark" mode="inline" selectedKeys={[activeMenu]} onClick={handelClickMenu}>
-        {routeMap.map(route => getMenuItem(route))}
-      </Menu>
-    </div>
+        <Menu theme="dark" mode="inline" selectedKeys={[activeMenu]} onClick={handelClickMenu}>
+          {routeMap.map(route => getMenuItem(route))}
+        </Menu>
+      </div>
+    </Scrollbars>
   )
 }
 
