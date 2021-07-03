@@ -3,8 +3,34 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 
 import config from '@/config'
 
+interface AxiosRequestConfigExpand extends AxiosRequestConfig {
+  isNoPending?: boolean
+}
+
+// const urlWithoutToken = ['/account/login', '/license/info']
+
+const CancelToken = axios.CancelToken
+window.cancelAxiosRequest = undefined
+// 放入一个全局数组，以便之后在router中统一取消
+window.__axiosPromiseArr = []
+
+// 防止重复请求
+const removePending = (config: AxiosRequestConfigExpand) => {
+  for (let key in window.__axiosPromiseArr) {
+    if (window.__axiosPromiseArr[key].url === config.url) {
+      window.__axiosPromiseArr[key].func()
+      window.__axiosPromiseArr.splice(key, 1)
+    }
+  }
+}
+
 export class Request {
-  private baseConfig: AxiosRequestConfig = {
+  // private baseConfig: AxiosRequestConfig = {
+  //   baseURL: config.BaseURL,
+  //   headers: {},
+  //   timeout: 8000,
+  // }
+  private baseConfig: AxiosRequestConfigExpand = {
     baseURL: config.BaseURL,
     headers: {},
     timeout: 8000,
@@ -73,11 +99,23 @@ export class Request {
   // 请求拦截器
   private setReqInterceptors = () => {
     this.instance.interceptors.request.use(
-      config => {
+      (config: AxiosRequestConfigExpand) => {
         // 添加token
         if (localStorage.getItem('token') && config.url !== '/account/login') {
           config.headers.token = localStorage.getItem('token')
         }
+
+        // 取消重复请求
+        if (!config.isNoPending) {
+          removePending(config)
+        }
+
+        config.cancelToken = new CancelToken(cancel => {
+          window.__axiosPromiseArr.push({
+            url: config.url,
+            func: cancel,
+          })
+        })
 
         return config
       },
