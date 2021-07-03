@@ -46,5 +46,6 @@ module.exports = {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
+    '@typescript-eslint/no-non-null-assertion': 0, //允许用断言
   },
 };
