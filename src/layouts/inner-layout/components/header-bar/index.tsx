@@ -4,6 +4,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import React from 'react'
 
 import AvatarMenu from '../avatar-menu'
+import PageBreadcrumb from '../page-breadcrumb'
 
 interface IHeaderProps {
   collapse: boolean
@@ -15,11 +16,15 @@ const HeaderBar: React.FC<IHeaderProps> = props => {
 
   return (
     <div className="header-bar">
-      {collapse ? (
-        <MenuUnfoldOutlined className="header-bar__trigger" onClick={onTrigger} />
-      ) : (
-        <MenuFoldOutlined className="header-bar__trigger" onClick={onTrigger} />
-      )}
+      <div className="header-bar-left">
+        {collapse ? (
+          <MenuUnfoldOutlined className="header-bar__trigger" onClick={onTrigger} />
+        ) : (
+          <MenuFoldOutlined className="header-bar__trigger" onClick={onTrigger} />
+        )}
+
+        <PageBreadcrumb />
+      </div>
 
       <div>
         <AvatarMenu />
