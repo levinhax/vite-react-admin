@@ -3,23 +3,51 @@ import { Route, RouteProps, Switch } from 'react-router-dom'
 
 import PageLoading from '@/components/page-loading/pageLoading'
 
-const Home = lazy(() => import('@/views/Home'))
-const Dashboard = lazy(() => import('@/views/Dashboard'))
+import IRoute from './IRoute'
 
-const routes: RouteProps[] = [
+// const Home = lazy(() => import('@/views/Home'))
+const Dashboard = lazy(() => import('@/views/Dashboard'))
+const OtherAnimation = lazy(() => import('@/views/Other/animation'))
+const OtherGallery = lazy(() => import('@/views/Other/gallery'))
+
+// const routes: RouteProps[] = [
+//   {
+//     path: '/dashboard',
+//     exact: true,
+//     component: Dashboard,
+//   },
+//   {
+//     path: '/home',
+//     exact: true,
+//     component: Home,
+//   },
+// ]
+
+export const routes: IRoute[] = [
   {
+    name: 'dashboard',
+    title: '首页',
     path: '/dashboard',
     exact: true,
     component: Dashboard,
   },
   {
-    path: '/home',
+    name: 'otherAnimation',
+    title: '动画',
+    path: '/other/animation',
     exact: true,
-    component: Home,
+    component: OtherAnimation,
+  },
+  {
+    name: 'otherGallery',
+    title: '画廊',
+    path: '/other/gallery',
+    exact: true,
+    component: OtherGallery,
   },
 ]
 
-const OterRouter = () => (
+const InnerRouter = () => (
   <Suspense fallback={<PageLoading />}>
     <Switch>
       {routes.map((route: RouteProps) => (
@@ -29,4 +57,4 @@ const OterRouter = () => (
   </Suspense>
 )
 
-export default OterRouter
+export default InnerRouter
