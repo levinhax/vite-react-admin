@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import InnerRouter, { IRoute } from '@/router/innerRouter'
+import { routesMap } from '@/router/innerRouter/initRoutes'
 
 import menus from '../../constants/menu'
 import HeaderBar from './components/header-bar'
@@ -38,7 +39,8 @@ function InnerLayout() {
         <HeaderBar collapse={collapse} onTrigger={triggerCollapse} />
 
         <div className="content">
-          <InnerRouter />
+          {/* <InnerRouter /> */}
+          <InnerRouter routeMap={routesMap} />
         </div>
 
         <BackTop
