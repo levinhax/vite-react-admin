@@ -17,8 +17,12 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
+    "@koa/router": "^10.0.0",
     "antd": "^4.16.6",
     "axios": "^0.21.1",
+    "koa": "^2.13.1",
+    "koa2-cors": "^2.0.6",
+    "mockjs": "^1.1.0",
     "react": "^17.0.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.0",
