@@ -25,6 +25,19 @@ const menus: IRoute[] = [
       },
     ],
   },
+  {
+    name: 'permission',
+    title: '权限',
+    path: '/permission',
+    icon: 'menuBlank',
+    children: [
+      {
+        name: 'test',
+        title: '测试页',
+        path: '/permission/test',
+      },
+    ],
+  },
 ]
 
 export default menus

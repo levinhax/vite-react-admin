@@ -3,6 +3,8 @@ const breadcrumbNameMap: any = {
   '/other': '其他',
   '/other/animation': '动画',
   '/other/gallery': '画廊',
+  '/permission': '权限',
+  '/permission/test': '测试页',
 }
 
 export default breadcrumbNameMap

@@ -3,8 +3,9 @@ import { IPermission } from '@/model/common'
 import IRoute from './IRoute'
 import dashboardRoute from './modules/dashboard'
 import otherRoute from './modules/other'
+import permissionRoute from './modules/permission'
 
-export const routesMap = [dashboardRoute, otherRoute]
+export const routesMap = [dashboardRoute, otherRoute, permissionRoute]
 
 // 根据路由名称获取可访问的路由表
 const filterRouteMap = (routeNames: string[], routesMap: IRoute[]) => {
