@@ -1,34 +1,78 @@
-const Koa = require('koa')
-const app = new Koa()
-const cors = require('koa2-cors')
-const Router = require('@koa/router')
-const router = new Router({ prefix: '/api' })
+const jsonServer = require('json-server') // 在node里面使用json-server包
+const db = require('./modules/db') // 引入mockjs配置模块
+// const path = require('path')
+// const Mock = require('mockjs')
 
-// app.use(async ctx => {
-//   ctx.body = 'Hello World'
-// })
+let prefix = '/api' // 定义路由根别名
+// let time = 1000 // 延时返回数据
 
-router.get('/', ctx => {
-  ctx.body = {
-    status: 200,
-    data: 'Hello World',
-  }
+// 创建服务器
+const server = jsonServer.create() // 创建jsonserver 服务对象
+
+// // 配置jsonserver服务器 中间件
+// server.use(
+//   jsonServer.defaults({
+//     static: path.join(__dirname, '/public'), // 静态资源托管
+//   })
+// )
+
+server.use(jsonServer.bodyParser) // 抓取body数据使用json-server中间件
+
+// 响应
+server.use((req, res, next) => {
+  // 可选 统一修改请求方式
+
+  // token统一携带的校验  islogin接口存在，这里无需
+  // if (req.url.includes('/login') || req.url.includes('/register')) {
+  //   next()
+  // } else {
+  //   if (req.headers.token && req.headers.token.length === 16) {
+  //     next()
+  //   } else {
+  //     setTimeout(() => {
+  //       res.jsonp({
+  //         code: 401,
+  //         message: 'token不存在，或者过期',
+  //       })
+  //     }, time)
+  //   }
+  // }
+
+  // 不做校验
+  next()
 })
 
-app.use(router.routes()).use(router.allowedMethods())
-
-// 如果使用后端跨域，开启这里
-app.use(
-  cors({
-    origin: ctx => {
-      const origin = ctx.headers.origin
-      return origin
+server.get(`${prefix}/list`, (req, res) => {
+  console.log('req: ', req.url)
+  // console.log(req.query, req.body) // 抓取提交过来的query和body
+  res.jsonp({
+    code: 0,
+    message: '数据读取成功',
+    data: {
+      list: db.list,
     },
-    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true,
   })
-)
+})
 
-app.listen(3001, () => {
-  console.log('Server is running on 3001 port')
+// server.get(`${prefix}/login`, (req, res) => {
+//   // console.log(req.query, req.body) // 抓取提交过来的query和body
+//   let username = req.query.username
+//   let password = req.query.password
+//   username === 'admin' && password === '123456'
+//     ? res.jsonp({
+//         code: 0,
+//         message: '登录成功',
+//         data: {
+//           token: 'token_admin',
+//         },
+//       })
+//     : res.jsonp({
+//         code: 400,
+//         message: '登录失败',
+//       })
+// })
+
+// 开启jsonserver服务
+server.listen(3001, () => {
+  console.log('mock server is running port 3001')
 })
