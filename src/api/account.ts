@@ -8,6 +8,14 @@ const login = async (params: { username: string; password: string; verCode: stri
   }
 }
 
+const getUserInfo = async (params: {}) => {
+  const res = await request.get('/userInfo', { params, responseType: 'json' })
+  return {
+    data: res,
+  }
+}
+
 export default {
   login,
+  getUserInfo,
 }

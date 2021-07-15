@@ -5,6 +5,7 @@ import { Button, Col, Form, Input, message, Row } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
+import service from '@/api/account'
 import { verificationCode } from '@/utils/verification-code'
 
 function Login() {
@@ -28,6 +29,9 @@ function Login() {
     if (username === 'admin' && password === '123456') {
       history.replace('/dashboard')
     } else {
+      const params = {}
+      const res = await service.getUserInfo(params)
+      console.log('res: ', res)
       message.error('请检查您的账号密码')
     }
   }

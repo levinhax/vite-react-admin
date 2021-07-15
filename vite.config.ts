@@ -9,6 +9,13 @@ const resolve = dir => path.resolve(process.cwd(), dir)
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [reactRefresh(), svgr()],
+  server: {
+    // port: 3000,
+    // open: true,
+    proxy: {
+			'/api': 'http://localhost:3001'
+		}
+  },
   // 配置Dep优化行为
   optimizeDeps: {
     // 这个命令专门为解决模块引用的坑而开发

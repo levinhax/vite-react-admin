@@ -135,7 +135,7 @@ export class Request {
         }
 
         const { code, data, msg } = res.data
-        if (code === 200) {
+        if (code === 0) {
           return Promise.resolve(data)
         } else {
           message.error(msg || '获取数据失败')
