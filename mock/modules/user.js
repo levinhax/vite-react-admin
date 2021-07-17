@@ -32,17 +32,13 @@ const userInfo = Mock.mock({
 })
 
 module.exports = {
-  login(config) {
-    const { account } = JSON.parse(config.body)
-    if (account === 'admin') {
+  login(username) {
+    if (username === 'admin') {
       loginData.token = '303c9aa195d04cf184557d8321a3693d' // role 1
-    } else if (account === 'guest') {
+    } else if (username === 'guest') {
       loginData.token = '4d91bb4471574c3da9a85f5ff27c4fcb' // role 2
     }
-    return {
-      code: 200,
-      data: loginData,
-    }
+    return loginData.token
   },
   logout() {
     return {

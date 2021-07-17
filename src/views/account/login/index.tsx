@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import service from '@/api/account'
+// import request from '@/utils/request'
 import { verificationCode } from '@/utils/verification-code'
 
 function Login() {
@@ -26,13 +27,25 @@ function Login() {
   const handleFinish = async (values: any) => {
     console.log('handleFinish: ', values)
     const { username, password } = values
-    if (username === 'admin' && password === '123456') {
+    if (import.meta.env.VITE_USE_MOCK) {
+      const params = {
+        username,
+        password,
+        verCode,
+      }
+      const res = await service.login(params)
+      // request.setHeader({ Authorization: res.token })
+      localStorage.setItem('token', res.token)
       history.replace('/dashboard')
     } else {
-      const params = {}
-      const res = await service.getUserInfo(params)
-      console.log('res: ', res)
-      message.error('请检查您的账号密码')
+      if (username === 'admin' && password === 'admin123456') {
+        history.replace('/dashboard')
+      } else {
+        const params = {}
+        const res = await service.getUserInfo(params)
+        console.log('res: ', res)
+        message.error('请检查您的账号密码')
+      }
     }
   }
 

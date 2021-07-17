@@ -58,23 +58,23 @@ server.use(jsonServer.bodyParser) // 抓取body数据使用json-server中间件
 //   })
 // })
 
-// server.get(`${prefix}/login`, (req, res) => {
-//   // console.log(req.query, req.body) // 抓取提交过来的query和body
-//   let username = req.query.username
-//   let password = req.query.password
-//   username === 'admin' && password === '123456'
-//     ? res.jsonp({
-//         code: 0,
-//         message: '登录成功',
-//         data: {
-//           token: 'token_admin',
-//         },
-//       })
-//     : res.jsonp({
-//         code: 400,
-//         message: '登录失败',
-//       })
-// })
+server.post(`${prefix}/login`, (req, res) => {
+  // console.log(req.query, req.body) // 抓取提交过来的query和body
+  let username = req.body.username
+  let password = req.body.password
+  username === 'admin' && password === 'admin123456'
+    ? res.jsonp({
+        code: 0,
+        message: '登录成功',
+        data: {
+          token: mockUser.login(username),
+        },
+      })
+    : res.jsonp({
+        code: 400,
+        message: '登录失败',
+      })
+})
 
 // 获取用户信息
 server.get(`${prefix}/userInfo`, (req, res) => {
