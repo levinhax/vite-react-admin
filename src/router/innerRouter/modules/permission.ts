@@ -5,8 +5,8 @@ import IRoute from '../IRoute'
 const PermissionTest = lazy(() => import('@/views/Permission/test'))
 
 const routes: IRoute = {
-  name: '',
-  title: '',
+  name: 'permission',
+  title: '权限',
   path: '/permission',
   children: [
     {

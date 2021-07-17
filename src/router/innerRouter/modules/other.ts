@@ -6,8 +6,8 @@ const OtherAnimation = lazy(() => import('@/views/Other/animation'))
 const OtherGallery = lazy(() => import('@/views/Other/gallery'))
 
 const routes: IRoute = {
-  name: '',
-  title: '',
+  name: 'other',
+  title: '其他',
   path: '/other',
   children: [
     {

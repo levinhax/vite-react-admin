@@ -82,9 +82,7 @@ server.get(`${prefix}/userInfo`, (req, res) => {
   res.jsonp({
     code: 0,
     message: '用户信息获取成功',
-    data: {
-      list: mockUser.getUserInfo(req.headers),
-    },
+    data: mockUser.getUserInfo(req.headers),
   })
 })
 

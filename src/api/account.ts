@@ -9,7 +9,7 @@ const login = async (params: { username: string; password: string; verCode: stri
 }
 
 const getUserInfo = async (params: {}) => {
-  const res = await request.get('/userInfo', { params, responseType: 'json' })
+  const res = await request.get('/userInfo', params)
   return {
     data: res,
   }

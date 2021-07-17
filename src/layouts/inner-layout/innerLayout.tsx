@@ -4,7 +4,8 @@ import { BackTop, Layout } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import InnerRouter, { IRoute } from '@/router/innerRouter'
+import service from '@/api/account'
+import InnerRouter, { initRoutes, IRoute } from '@/router/innerRouter'
 import { routesMap } from '@/router/innerRouter/initRoutes'
 
 import menus from '../../constants/menu'
@@ -22,6 +23,18 @@ function InnerLayout() {
     // 校验token，获取route时使用权限处理函数
     // setRouteMap([])
     setRouteMap(menus)
+
+    const token = localStorage.getItem('token')
+    if (!token) {
+      history.replace('/account/login')
+    } else {
+      const params = {}
+      service.getUserInfo(params).then(res => {
+        console.log('res: ', res.data.permission)
+        // accountStore.setAccountInfo(res)
+        setRouteMap(initRoutes(res.data.permission))
+      })
+    }
   }, [history])
 
   // 切换菜单折叠状态

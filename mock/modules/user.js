@@ -47,13 +47,29 @@ module.exports = {
     }
   },
   getUserInfo(config) {
-    console.log('config: ', config)
-    // const { token } = config
-    // if (token === '303c9aa195d04cf184557d8321a3693d') {
-    //   userInfo.roles = [1]
-    // } else if (token === '4d91bb4471574c3da9a85f5ff27c4fcb') {
-    //   userInfo.roles = [2]
-    // }
+    // console.log('config: ', config)
+    const { token } = config
+    console.log('token: ', token)
+    if (token === '303c9aa195d04cf184557d8321a3693d') {
+      userInfo.roles = [1]
+    } else if (token === '4d91bb4471574c3da9a85f5ff27c4fcb') {
+      userInfo.roles = [2]
+      userInfo.permission = [
+        {
+          id: 1,
+          name: 'dashboard',
+        },
+        {
+          id: 2,
+          name: 'other',
+        },
+        // {
+        //   id: 3,
+        //   name: 'permission',
+        //   reminder: '您没有权限访问',
+        // },
+      ]
+    }
     return userInfo
   },
 }
