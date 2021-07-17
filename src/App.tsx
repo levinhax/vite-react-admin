@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -8,6 +8,11 @@ const InnerLayout = React.lazy(() => import('@/layouts/inner-layout'))
 const OuterLayout = React.lazy(() => import('@/layouts/outer-layout'))
 
 function App() {
+  useEffect(() => {
+    console.log('环境变量标题：', import.meta.env.VITE_APP_TITLE)
+    document.title = import.meta.env.VITE_APP_TITLE
+  }, [])
+
   return (
     <Router>
       <React.Suspense fallback={<PageLoading />}>
