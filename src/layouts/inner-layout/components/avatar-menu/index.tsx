@@ -15,6 +15,7 @@ function AvatarMenu() {
       case 'setting':
         break
       case 'logout':
+        localStorage.clear()
         history.replace('/account/login')
         break
       default:

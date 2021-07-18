@@ -22,18 +22,24 @@ function InnerLayout() {
   useEffect(() => {
     // 校验token，获取route时使用权限处理函数
     // setRouteMap([])
-    setRouteMap(menus)
-
     const token = localStorage.getItem('token')
-    if (!token) {
-      history.replace('/account/login')
+    if (import.meta.env.VITE_USE_MOCK === 'true') {
+      // 使用mock数据
+      if (!token) {
+        history.replace('/account/login')
+      } else {
+        const params = {}
+        service.getUserInfo(params).then(res => {
+          console.log('res: ', res.data.permission)
+          // accountStore.setAccountInfo(res)
+          setRouteMap(initRoutes(res.data.permission))
+        })
+      }
     } else {
-      const params = {}
-      service.getUserInfo(params).then(res => {
-        console.log('res: ', res.data.permission)
-        // accountStore.setAccountInfo(res)
-        setRouteMap(initRoutes(res.data.permission))
-      })
+      if (!token) {
+        history.replace('/account/login')
+      }
+      setRouteMap(menus)
     }
   }, [history])
 

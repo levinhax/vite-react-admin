@@ -62,18 +62,20 @@ server.post(`${prefix}/login`, (req, res) => {
   // console.log(req.query, req.body) // 抓取提交过来的query和body
   let username = req.body.username
   let password = req.body.password
-  username === 'admin' && password === 'admin123456'
-    ? res.jsonp({
-        code: 0,
-        message: '登录成功',
-        data: {
-          token: mockUser.login(username),
-        },
-      })
-    : res.jsonp({
-        code: 400,
-        message: '登录失败',
-      })
+  if ((username === 'admin' || username === 'guest') && password === 'admin123456') {
+    res.jsonp({
+      code: 0,
+      message: '登录成功',
+      data: {
+        token: mockUser.login(username),
+      },
+    })
+  } else {
+    res.jsonp({
+      code: 400,
+      message: '登录失败',
+    })
+  }
 })
 
 // 获取用户信息

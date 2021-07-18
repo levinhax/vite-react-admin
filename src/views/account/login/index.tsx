@@ -27,7 +27,7 @@ function Login() {
   const handleFinish = async (values: any) => {
     console.log('handleFinish: ', values)
     const { username, password } = values
-    if (import.meta.env.VITE_USE_MOCK) {
+    if (import.meta.env.VITE_USE_MOCK === 'true') {
       const params = {
         username,
         password,
@@ -39,6 +39,8 @@ function Login() {
       history.replace('/dashboard')
     } else {
       if (username === 'admin' && password === 'admin123456') {
+        console.log('验证成功')
+        localStorage.setItem('token', 'token_test')
         history.replace('/dashboard')
       } else {
         const params = {}
