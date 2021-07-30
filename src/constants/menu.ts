@@ -23,6 +23,11 @@ const menus: IRoute[] = [
         title: '画廊',
         path: '/other/gallery',
       },
+      {
+        name: 'otherRegexp',
+        title: '正则',
+        path: '/other/regexp',
+      },
     ],
   },
   {

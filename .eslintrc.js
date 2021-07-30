@@ -43,8 +43,10 @@ module.exports = {
   rules: {
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     "react/prop-types": "off",
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
+    // "simple-import-sort/imports": "error",
+    // "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "off", // 关闭排序校验
+    "simple-import-sort/exports": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     '@typescript-eslint/no-non-null-assertion': 0, //允许用断言
   },
