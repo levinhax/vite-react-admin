@@ -5,6 +5,7 @@ import IRoute from '../IRoute'
 const OtherAnimation = lazy(() => import('@/views/Other/animation'))
 const OtherGallery = lazy(() => import('@/views/Other/gallery'))
 const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
+const OtherFile = lazy(() => import('@/views/Other/file'))
 
 const routes: IRoute = {
   name: 'other',
@@ -31,6 +32,13 @@ const routes: IRoute = {
       path: '/other/regexp',
       exact: true,
       component: OtherRegExp,
+    },
+    {
+      name: 'otherFile',
+      title: '文件',
+      path: '/other/file',
+      exact: true,
+      component: OtherFile,
     },
   ],
 }
