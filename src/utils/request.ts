@@ -5,6 +5,7 @@ import config from '@/config'
 
 interface AxiosRequestConfigExpand extends AxiosRequestConfig {
   isNoPending?: boolean
+  responseRange?: string
 }
 
 // const urlWithoutToken = ['/account/login', '/license/info']
@@ -103,6 +104,12 @@ export class Request {
         // 添加token
         if (localStorage.getItem('token') && config.url !== '/account/login') {
           config.headers.token = localStorage.getItem('token')
+        }
+
+        // 支持分片下载
+        if (config.responseType === 'blob' && config?.responseRange) {
+          // config.headers.Range = 'bytes=0-1023'
+          config.headers.Range = config?.responseRange
         }
 
         // 取消重复请求

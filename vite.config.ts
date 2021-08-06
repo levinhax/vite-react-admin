@@ -13,7 +13,12 @@ export default defineConfig({
     // port: 3000,
     // open: true,
     proxy: {
-			'/api': 'http://localhost:3001'
+			'/api': 'http://localhost:3001',
+      '/api/test': {
+        changeOrigin: true,
+        target: 'http://10.11.32.173:8080/',
+        rewrite: (path) => path.replace(/^\/api\/test/, '')
+      }
 		}
   },
   // 配置Dep优化行为
