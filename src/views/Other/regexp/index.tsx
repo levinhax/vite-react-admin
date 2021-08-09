@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 
 import { Form, Input, Space, Tooltip, Typography } from 'antd'
-import { helperValidateUserName } from '@/utils/helperReg'
+import {
+  helperValidateUserName,
+  helperValidateAccountName,
+  helperValidatePwd,
+  helperValidatePhone,
+  helperValidateEmail,
+  helperValidateHex,
+} from '@/utils/helperReg'
 
 function OtherRegExp() {
   const [initValues] = useState({
@@ -18,9 +25,55 @@ function OtherRegExp() {
   }
 
   // ========================== 校验规则 =================================================
+  // 4到16位（字母，数字，下划线，减号）
   const validateReg1 = (_: any, value: string) => {
     console.log('validateReg1: ', value, helperValidateUserName(value))
     if (value && helperValidateUserName(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // 4到16位（字母开头，允许字母数字下划线）
+  const validateReg2 = (_: any, value: string) => {
+    console.log('validateReg2: ', value, helperValidateAccountName(value))
+    if (value && helperValidateAccountName(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // 必须包含大小写字母和数字的组合，可使用特殊字符，长度在8-10之间
+  const validateReg3 = (_: any, value: string) => {
+    console.log('validateReg3: ', value, helperValidatePwd(value))
+    if (value && helperValidatePwd(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // 手机号
+  const validateReg4 = (_: any, value: string) => {
+    console.log('validateReg4: ', value, helperValidatePhone(value))
+    if (value && helperValidatePhone(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // 邮箱
+  const validateReg5 = (_: any, value: string) => {
+    console.log('validateReg5: ', value, helperValidateEmail(value))
+    if (value && helperValidateEmail(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // 十六进制颜色
+  const validateReg10 = (_: any, value: string) => {
+    console.log('validateReg10: ', value, helperValidateHex(value))
+    if (value && helperValidateHex(value)) {
       return Promise.resolve()
     }
     return Promise.reject(new Error('请检查您输入的数据!'))
@@ -48,6 +101,61 @@ function OtherRegExp() {
                 <Input style={{ width: 210 }} placeholder="请输入" />
               </Form.Item>
               <Tooltip title="4到16位（字母，数字，下划线，减号）">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="账号">
+            <Space>
+              <Form.Item name="accountname" noStyle rules={[{ validator: validateReg2 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="4到16位（字母开头，允许字母数字下划线）">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="密码">
+            <Space>
+              <Form.Item name="password" noStyle rules={[{ validator: validateReg3 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="必须包含大小写字母和数字的组合，可使用特殊字符，长度在8-12之间">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="手机号">
+            <Space>
+              <Form.Item name="telPhone" noStyle rules={[{ validator: validateReg4 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="手机号">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="邮箱">
+            <Space>
+              <Form.Item name="email" noStyle rules={[{ validator: validateReg5 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="邮箱">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="十六进制颜色">
+            <Space>
+              <Form.Item name="hexColor" noStyle rules={[{ validator: validateReg10 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="十六进制颜色">
                 <Typography.Link href="#">规则</Typography.Link>
               </Tooltip>
             </Space>
