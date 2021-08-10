@@ -1,8 +1,10 @@
-// 获取(嵌套)数组第一项
-export const getArrFirst = (arr: Array<any>): any => {
-  if (!arr?.length) return null
-  if (arr[0]?.children?.length) {
-    return getArrFirst(arr[0].children)
+// 过滤空参数
+export const helperFilterEmptyParam = (obj: { [x: string]: any }) => {
+  const newObj: { [x: string]: any } = {}
+  for (let key in obj) {
+    if (obj[key] !== '') {
+      newObj[key] = obj[key]
+    }
   }
-  return arr[0]
+  return newObj
 }
