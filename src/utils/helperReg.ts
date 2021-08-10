@@ -44,6 +44,42 @@ export const helperValidateEmail = (value: string) => {
   return false
 }
 
+// URL正则
+export const helperValidateUrl = (value: string) => {
+  const uPattern = /^((https?|ftp|file):\/\/)?([\da-z\\.-]+)\.([a-z\\.]{2,6})([\\/\w \\.-]*)*\/?$/
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
+
+// IPv4正则
+export const helperValidateIPv4 = (value: string) => {
+  const uPattern = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
+
+// 身份证号正则
+export const helperValidateIdCard = (value: string) => {
+  const uPattern = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
+
+// 邮编正则
+export const helperValidateZipCode = (value: string) => {
+  const uPattern = /^\d{6}$/
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
+
 // 十六进制 Hex颜色
 export const helperValidateHex = (value: string) => {
   const uPattern = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/

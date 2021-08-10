@@ -7,6 +7,10 @@ import {
   helperValidatePwd,
   helperValidatePhone,
   helperValidateEmail,
+  helperValidateUrl,
+  helperValidateIPv4,
+  helperValidateIdCard,
+  helperValidateZipCode,
   helperValidateHex,
 } from '@/utils/helperReg'
 
@@ -65,6 +69,42 @@ function OtherRegExp() {
   const validateReg5 = (_: any, value: string) => {
     console.log('validateReg5: ', value, helperValidateEmail(value))
     if (value && helperValidateEmail(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // URL
+  const validateReg6 = (_: any, value: string) => {
+    console.log('validateReg6: ', value, helperValidateUrl(value))
+    if (value && helperValidateUrl(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // IPv4
+  const validateReg7 = (_: any, value: string) => {
+    console.log('validateReg7: ', value, helperValidateIPv4(value))
+    if (value && helperValidateIPv4(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // 身份证号
+  const validateReg8 = (_: any, value: string) => {
+    console.log('validateReg8: ', value, helperValidateIdCard(value))
+    if (value && helperValidateIdCard(value)) {
+      return Promise.resolve()
+    }
+    return Promise.reject(new Error('请检查您输入的数据!'))
+  }
+
+  // 邮编
+  const validateReg9 = (_: any, value: string) => {
+    console.log('validateReg9: ', value, helperValidateZipCode(value))
+    if (value && helperValidateZipCode(value)) {
       return Promise.resolve()
     }
     return Promise.reject(new Error('请检查您输入的数据!'))
@@ -145,6 +185,50 @@ function OtherRegExp() {
                 <Input style={{ width: 210 }} placeholder="请输入" />
               </Form.Item>
               <Tooltip title="邮箱">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="URL地址">
+            <Space>
+              <Form.Item name="url" noStyle rules={[{ validator: validateReg6 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="URL地址">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="IPv4">
+            <Space>
+              <Form.Item name="IPv4" noStyle rules={[{ validator: validateReg7 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="IPv4">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="身份证号">
+            <Space>
+              <Form.Item name="IdCard" noStyle rules={[{ validator: validateReg8 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="身份证号">
+                <Typography.Link href="#">规则</Typography.Link>
+              </Tooltip>
+            </Space>
+          </Form.Item>
+
+          <Form.Item label="邮编">
+            <Space>
+              <Form.Item name="ZipCode" noStyle rules={[{ validator: validateReg9 }]} validateTrigger="onBlur">
+                <Input style={{ width: 210 }} placeholder="请输入" />
+              </Form.Item>
+              <Tooltip title="邮编">
                 <Typography.Link href="#">规则</Typography.Link>
               </Tooltip>
             </Space>
