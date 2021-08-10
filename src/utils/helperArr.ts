@@ -17,3 +17,24 @@ export const isAllEqual = (array: Array<string | number | boolean>) => {
     return true
   }
 }
+
+// 判断数组元素是否重复
+export const isRepeat = (arr: Array<any>): boolean => {
+  const hash: { [x: string]: any } = {}
+  for (let i in arr) {
+    if (hash[arr[i]]) {
+      return true
+    }
+    hash[arr[i]] = true
+  }
+  return false
+}
+
+// 数组去重
+export const noRepeat = (arr: Array<any>): any => {
+  const set = new Set()
+  for (let i = 0; i < arr.length; i++) {
+    set.add(arr[i])
+  }
+  return Array.from(set)
+}
