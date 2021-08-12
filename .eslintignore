@@ -4,3 +4,5 @@ dist
 **/*.d.ts
 src/assets
 vite.config.ts
+jest.config.js
+coverage/
