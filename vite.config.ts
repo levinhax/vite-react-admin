@@ -39,6 +39,9 @@ export default defineConfig({
         }
       },
     },
+    modules: {
+      localsConvention: 'camelCase' // 开启 camelCase 格式变量名转换
+    },
   },
   resolve: {
 		alias: {
