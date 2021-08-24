@@ -17,3 +17,5 @@ package.json
 yarn-error.log
 CHANGELOG.md
 vite.config.ts
+jest.config.js
+coverage/

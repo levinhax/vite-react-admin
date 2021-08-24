@@ -5,3 +5,6 @@
  * @return {Number}
  */
 export const randomNumber = (min: number, max: number): number => Math.floor(min + Math.random() * (max - min + 1))
+
+// 保留到小数点以后n位
+export const cutNumber = (number: number, no: number = 2) => Number(number.toFixed(no))

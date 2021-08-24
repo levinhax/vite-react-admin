@@ -28,6 +28,11 @@ const menus: IRoute[] = [
         title: '正则',
         path: '/other/regexp',
       },
+      {
+        name: 'otherFile',
+        title: '文件',
+        path: '/other/file',
+      },
     ],
   },
   {
