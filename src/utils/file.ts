@@ -42,3 +42,6 @@ export const saveBlobFile = function (data: any, fileName: string) {
     navigator.msSaveBlob(blob, fileName)
   }
 }
+
+// 获取文件后缀名
+export const getFileExt = (value: any) => value.split('.').pop().toLowerCase()

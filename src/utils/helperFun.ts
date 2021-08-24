@@ -8,3 +8,17 @@ export const helperFilterEmptyParam = (obj: { [x: string]: any }) => {
   }
   return newObj
 }
+
+// 对象转化为FormData对象
+export const helperTransformFormData = (obj: { [x: string]: any }) => {
+  const formData = new FormData()
+  Object.keys(obj).forEach(key => {
+    const value = obj[key]
+    if (Array.isArray(value)) {
+      value.forEach((subValue, i) => formData.append(key + `[${i}]`, subValue))
+    } else {
+      formData.append(key, obj[key])
+    }
+  })
+  return formData
+}

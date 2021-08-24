@@ -32,9 +32,10 @@ export const isRepeat = (arr: Array<any>): boolean => {
 
 // 数组去重
 export const noRepeat = (arr: Array<any>): any => {
-  const set = new Set()
-  for (let i = 0; i < arr.length; i++) {
-    set.add(arr[i])
-  }
-  return Array.from(set)
+  // const set = new Set()
+  // for (let i = 0; i < arr.length; i++) {
+  //   set.add(arr[i])
+  // }
+  // return Array.from(set)
+  return [...new Set(arr)]
 }
