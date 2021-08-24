@@ -88,3 +88,92 @@ export const helperValidateHex = (value: string) => {
   }
   return false
 }
+
+// 数字价格千分位分割
+export const helperValidateThousandth = (value: number) => {
+  if (value.toString().indexOf('.') !== -1) {
+    return value.toLocaleString()
+  } else {
+    const uPattern = /(?!^)(?=(\d{3})+$)/g
+    return value.toString().replace(uPattern, ',')
+  }
+}
+
+// 是否是都由中文组成
+export const helperValidateAllChinese = (value: string) => {
+  const uPattern = /^[\u4E00-\u9FA5]+$/
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
+
+// 是否包含中文
+export const helperValidateIncludeChinese = (value: string) => {
+  const uPattern = /[\u4E00-\u9FA5]/
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
+
+// 获取网页中所有img标签的图片地址
+export const helperValidateImgPath = (sHtml: any) => {
+  const imgUrlRegex = /<img[^>]+src="((?:https?:)?\/\/[^"]+)"[^>]*?>/gi
+  let matchImgUrls: any[] = []
+
+  sHtml.replace(imgUrlRegex, (match: any, $1: any) => {
+    $1 && matchImgUrls.push($1)
+  })
+  return matchImgUrls
+}
+
+// 判断版本号
+export const helperValidateVersion = (value: string) => {
+  const uPattern = /^(?:\d+\.){2}\d+$/
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
+
+// HTML转义
+export const helperValidateEscape = (value: string) => {
+  const escapeMaps: any = {
+    '&': 'amp',
+    '<': 'lt',
+    '>': 'gt',
+    '"': 'quot',
+    "'": '#39',
+  }
+  const escapeRegexp = new RegExp(`[${Object.keys(escapeMaps).join('')}]`, 'g')
+
+  return value.replace(escapeRegexp, match => `&${escapeMaps[match]};`)
+}
+
+// HTML反转义
+export const helperValidateUnEscape = (value: string) => {
+  const unescapeMaps: any = {
+    amp: '&',
+    lt: '<',
+    gt: '>',
+    quot: '"',
+    '#39': "'",
+  }
+  const unescapeRegexp = /&([^;]+);/g
+
+  return value.replace(unescapeRegexp, (match, unescapeKey) => {
+    return unescapeMaps[unescapeKey] || match
+  })
+}
+
+// 提取连续重复的字符
+export const helperValidateRepeatStr = (value: string) => {
+  const repeatStrs: string[] = []
+  const repeatRe = /(.+)\1+/g
+  // 很多时候replace并不是用来做替换，而是做数据提取用
+  value.replace(repeatRe, (_$0, $1): any => {
+    $1 && repeatStrs.push($1)
+  })
+  return repeatStrs
+}
