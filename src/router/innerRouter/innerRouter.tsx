@@ -8,14 +8,15 @@ import IRoute from './IRoute'
 const InnerRouter = ({ routeMap }: any) => {
   // 根据路由配置生成路由
   const getRoutes = (routeMap: IRoute[]) => {
-    const routes: RouteProps[] = []
+    // const routes: RouteProps[] = []
+    const routes: IRoute[] = []
     const getRoute = (routeMap: IRoute[]) => {
       routeMap.forEach(config => {
-        const { path, exact, component, children } = config
+        const { path, name, title, exact, component, children } = config
         if (children) {
           getRoute(children)
         } else {
-          routes.push({ path, exact, component })
+          routes.push({ path, name, title, exact, component })
         }
       })
     }

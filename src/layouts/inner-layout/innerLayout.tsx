@@ -20,6 +20,7 @@ function InnerLayout() {
   const [routeMap, setRouteMap] = useState<IRoute[]>([])
 
   useEffect(() => {
+    console.log('history: ', history)
     // 校验token，获取route时使用权限处理函数
     // setRouteMap([])
     const token = localStorage.getItem('token')
@@ -59,7 +60,13 @@ function InnerLayout() {
 
         <div className="content">
           {/* <InnerRouter /> */}
+          {/* <InnerRouter routeMap={routesMap} /> */}
+
+          {/* 主应用渲染区，用于挂载主应用路由触发的组件 */}
           <InnerRouter routeMap={routesMap} />
+
+          {/* 子应用渲染区，用于挂载子应用节点 */}
+          {/* <section id="frame"></section> */}
         </div>
 
         <BackTop

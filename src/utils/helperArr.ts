@@ -39,3 +39,16 @@ export const noRepeat = (arr: Array<any>): any => {
   // return Array.from(set)
   return [...new Set(arr)]
 }
+
+// 二维数组铺平
+export const flattenArr = (arr: Array<any>): any => {
+  const newArr: any[] = []
+  arr.forEach(element => {
+    newArr.push(element)
+    if (element.children) {
+      newArr.push.apply(newArr, flattenArr(element.children))
+      delete element.children
+    }
+  })
+  return newArr
+}
