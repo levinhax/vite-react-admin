@@ -2,25 +2,31 @@ import './style.less'
 
 import { BackTop, Layout } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 import service from '@/api/account'
 import InnerRouter, { initRoutes, IRoute } from '@/router/innerRouter'
 import { routesMap } from '@/router/innerRouter/initRoutes'
 
+import { findArr } from '@/utils/helperArr'
+
+import { mainAppMenus } from '@/constants/menu'
 import menus from '../../constants/menu'
 import HeaderBar from './components/header-bar'
 import SideBar from './components/side-bar'
 
-function InnerLayout() {
+function InnerLayout(props: any) {
   const history = useHistory()
+  const location = useLocation()
   // 是否折叠侧边菜单
   const [collapse, setCollapse] = useState(false)
   // 路由配置
   const [routeMap, setRouteMap] = useState<IRoute[]>([])
+  // 是否属于主应用路由
+  const [isMainRoute, setIsMainRoute] = useState(false)
 
   useEffect(() => {
-    console.log('history: ', history)
+    console.log('props: ', props)
     // 校验token，获取route时使用权限处理函数
     // setRouteMap([])
     const token = localStorage.getItem('token')
@@ -44,6 +50,14 @@ function InnerLayout() {
     }
   }, [history])
 
+  useEffect(() => {
+    if (findArr(mainAppMenus, props?.location?.pathname, 'path')) {
+      setIsMainRoute(true)
+    } else {
+      setIsMainRoute(false)
+    }
+  }, [location.pathname])
+
   // 切换菜单折叠状态
   const triggerCollapse = () => {
     setCollapse(state => !state)
@@ -62,8 +76,10 @@ function InnerLayout() {
           {/* <InnerRouter /> */}
           {/* <InnerRouter routeMap={routesMap} /> */}
 
+          {isMainRoute ? <InnerRouter routeMap={routesMap} /> : <section id="frame"></section>}
+
           {/* 主应用渲染区，用于挂载主应用路由触发的组件 */}
-          <InnerRouter routeMap={routesMap} />
+          {/* <InnerRouter routeMap={routesMap} /> */}
 
           {/* 子应用渲染区，用于挂载子应用节点 */}
           {/* <section id="frame"></section> */}

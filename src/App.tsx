@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import PageLoading from './components/page-loading/pageLoading'
 
-const InnerLayout = React.lazy(() => import('@/layouts/inner-layout'))
+import InnerLayout from '@/layouts/inner-layout'
+// const InnerLayout = React.lazy(() => import('@/layouts/inner-layout'))
 const OuterLayout = React.lazy(() => import('@/layouts/outer-layout'))
 
 function App() {

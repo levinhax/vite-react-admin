@@ -52,3 +52,20 @@ export const flattenArr = (arr: Array<any>): any => {
   })
   return newArr
 }
+
+// 数组查找
+export const findArr = (arr: Array<any>, value: string | number, key: string, children = 'children'): any => {
+  let res = null
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][key] === value) {
+      res = arr[i]
+    } else if (arr[i][children] && arr[i][children].length > 0) {
+      res = findArr(arr[i][children], value, key)
+    }
+    if (res) {
+      delete res?.children
+      break
+    }
+  }
+  return res
+}

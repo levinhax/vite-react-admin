@@ -1,6 +1,6 @@
 import { IRoute } from '@/router/innerRouter'
 
-const menus: IRoute[] = [
+export const mainAppMenus: IRoute[] = [
   {
     name: 'dashboard',
     title: '首页',
@@ -45,6 +45,34 @@ const menus: IRoute[] = [
         name: 'test',
         title: '测试页',
         path: '/permission/test',
+      },
+    ],
+  },
+]
+
+const menus: IRoute[] = [
+  ...mainAppMenus,
+  // vue2 子应用
+  {
+    name: 'qiankun-micro-vue2',
+    title: '子应用Vue2',
+    path: '/micro1',
+    icon: 'menuBlank',
+    children: [
+      {
+        name: 'home',
+        title: '主页',
+        path: '/micro1/home',
+      },
+      {
+        name: 'about',
+        title: '关于',
+        path: '/micro1/about',
+      },
+      {
+        name: 'formMix',
+        title: '复杂表单',
+        path: '/micro1/form-mix',
       },
     ],
   },

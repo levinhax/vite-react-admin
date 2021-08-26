@@ -1,4 +1,4 @@
-import { isAllEqual, isRepeat, noRepeat, flattenArr } from '../../utils/helperArr'
+import { isAllEqual, isRepeat, noRepeat, flattenArr, findArr } from '../../utils/helperArr'
 
 describe('数组函数测试', () => {
   test('array isAllEqual', () => {
@@ -40,5 +40,39 @@ describe('数组函数测试', () => {
       },
     ]
     expect(flattenArr(arr1)).toStrictEqual(arr2)
+  })
+
+  test('array findArr', () => {
+    const arr1 = [
+      {
+        id: '1',
+        name: 'arr1',
+        children: [
+          {
+            id: '1-1',
+            name: 'arr1-1',
+          },
+        ],
+      },
+      {
+        id: '2',
+        name: 'arr2',
+        children: [
+          {
+            id: '2-1',
+            name: 'arr2-1',
+          },
+          {
+            id: '2-2',
+            name: 'arr2-2',
+          },
+        ],
+      },
+    ]
+    const result = {
+      id: '2',
+      name: 'arr2',
+    }
+    expect(findArr(arr1, 'arr2', 'name')).toStrictEqual(result)
   })
 })
