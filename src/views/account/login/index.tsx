@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom'
 import service from '@/api/account'
 // import request from '@/utils/request'
 import { verificationCode } from '@/utils/verification-code'
+import actions from '@/shared/actions'
 
 function Login() {
   const history = useHistory()
@@ -35,11 +36,17 @@ function Login() {
       }
       const res = await service.login(params)
       // request.setHeader({ Authorization: res.token })
+      actions.setGlobalState({
+        token: res.token,
+      })
       localStorage.setItem('token', res.token)
       history.replace('/dashboard')
     } else {
       if (username === 'admin' && password === 'admin123456') {
         console.log('验证成功')
+        actions.setGlobalState({
+          token: 'token_test',
+        })
         localStorage.setItem('token', 'token_test')
         history.replace('/dashboard')
       } else {
