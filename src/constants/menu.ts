@@ -50,9 +50,7 @@ export const mainAppMenus: IRoute[] = [
   },
 ]
 
-const menus: IRoute[] = [
-  ...mainAppMenus,
-  // vue2 子应用
+export const microVueMenus: IRoute[] = [
   {
     name: 'qiankun-micro-vue2',
     title: '子应用Vue2',
@@ -76,6 +74,35 @@ const menus: IRoute[] = [
       },
     ],
   },
+]
+
+export const microReactMenus: IRoute[] = [
+  {
+    name: 'qiankun-micro-react',
+    title: '子应用React',
+    path: '/micro2',
+    icon: 'menuBlank',
+    children: [
+      {
+        name: 'home',
+        title: '主页',
+        path: '/micro2/home',
+      },
+      {
+        name: 'about',
+        title: '关于',
+        path: '/micro2/about',
+      },
+    ],
+  },
+]
+
+const menus: IRoute[] = [
+  ...mainAppMenus,
+  // vue2 子应用(micro1)
+  ...microVueMenus,
+  // react 子应用(micro2)
+  ...microReactMenus,
 ]
 
 export default menus
