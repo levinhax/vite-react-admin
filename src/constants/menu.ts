@@ -68,9 +68,28 @@ export const microVueMenus: IRoute[] = [
         path: '/micro1/about',
       },
       {
-        name: 'formMix',
-        title: '复杂表单',
-        path: '/micro1/form-mix',
+        name: 'form',
+        title: '表单',
+        path: '/micro1/form',
+        children: [
+          {
+            name: 'formMix',
+            title: '复杂表单',
+            path: '/micro1/form-mix',
+          },
+        ],
+      },
+      {
+        name: 'table',
+        title: '表格',
+        path: '/micro1/table',
+        children: [
+          {
+            name: 'scrollTable',
+            title: '滚动表格',
+            path: '/micro1/scroll-table',
+          },
+        ],
       },
     ],
   },
