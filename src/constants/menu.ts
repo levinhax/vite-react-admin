@@ -91,6 +91,18 @@ export const microVueMenus: IRoute[] = [
           },
         ],
       },
+      {
+        name: 'chart',
+        title: '图表',
+        path: '/micro1/chart',
+        children: [
+          {
+            name: 'lineChart',
+            title: '折线图',
+            path: '/micro1/line-chart',
+          },
+        ],
+      },
     ],
   },
 ]
