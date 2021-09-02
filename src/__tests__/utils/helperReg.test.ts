@@ -5,6 +5,7 @@ import {
   helperValidateEscape,
   helperValidateUnEscape,
   helperValidateRepeatStr,
+  helperValidateWinFileName,
 } from '../../utils/helperReg'
 
 describe('正则测试', () => {
@@ -51,5 +52,10 @@ describe('正则测试', () => {
   it('Reg 提取连续重复的字符', () => {
     // expect(helperValidateRepeatStr('12323454545666')).toStrictEqual(['23', '45', '6'])
     expect(helperValidateRepeatStr('5666')).toStrictEqual(['6'])
+  })
+
+  it('Reg Windows文件命名非法字符', () => {
+    const str = '测试文件?*.docx'
+    expect(helperValidateWinFileName(str)).toBe(true)
   })
 })

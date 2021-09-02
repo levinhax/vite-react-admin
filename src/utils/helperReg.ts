@@ -177,3 +177,12 @@ export const helperValidateRepeatStr = (value: string) => {
   })
   return repeatStrs
 }
+
+// Windows文件命名非法字符，包含 \ / : * ? " < > |
+export const helperValidateWinFileName = (value: string) => {
+  const uPattern = new RegExp('[\\\\/:*?\\"<>|]')
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
