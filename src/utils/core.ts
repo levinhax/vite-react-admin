@@ -64,3 +64,12 @@ export const copyToBoard = (value: string) => {
   document.body.removeChild(element)
   return false
 }
+
+// 平滑滚动到页面顶部
+export const smoothScrollingToTop = () => {
+  const top = document.documentElement.scrollTop || document.body.scrollTop
+  if (top > 0) {
+    window.requestAnimationFrame(smoothScrollingToTop)
+    window.scrollTo(0, top - top / 8)
+  }
+}
