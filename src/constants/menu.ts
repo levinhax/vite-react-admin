@@ -89,6 +89,11 @@ export const microVueMenus: IRoute[] = [
             title: '滚动表格',
             path: '/micro1/scroll-table',
           },
+          {
+            name: 'pageTable',
+            title: '表格分页',
+            path: '/micro1/page-table',
+          },
         ],
       },
       {
