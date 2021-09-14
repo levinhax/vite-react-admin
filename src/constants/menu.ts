@@ -129,6 +129,23 @@ export const microReactMenus: IRoute[] = [
         title: '关于',
         path: '/micro2/about',
       },
+      {
+        name: 'charts',
+        title: '图表',
+        path: '/micro2/charts',
+        children: [
+          {
+            name: 'lineChart',
+            title: '折线图',
+            path: '/micro2/charts/lineChart',
+          },
+          {
+            name: 'ringRatioBarChart',
+            title: '同比环比柱状图',
+            path: '/micro2/charts/ringRatioBarChart',
+          },
+        ],
+      },
     ],
   },
 ]
