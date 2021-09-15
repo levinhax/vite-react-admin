@@ -144,6 +144,11 @@ export const microReactMenus: IRoute[] = [
             title: '同比环比柱状图',
             path: '/micro2/charts/ringRatioBarChart',
           },
+          {
+            name: 'threeDimensionalCylinder',
+            title: '立体柱图',
+            path: '/micro2/charts/threeDimensionalCylinder',
+          },
         ],
       },
     ],
