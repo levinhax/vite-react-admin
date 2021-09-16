@@ -149,6 +149,11 @@ export const microReactMenus: IRoute[] = [
             title: '立体柱图',
             path: '/micro2/charts/threeDimensionalCylinder',
           },
+          {
+            name: 'treeChart',
+            title: '树状图',
+            path: '/micro2/charts/tree',
+          },
         ],
       },
     ],
