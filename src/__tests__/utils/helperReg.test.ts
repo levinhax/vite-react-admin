@@ -6,6 +6,7 @@ import {
   helperValidateUnEscape,
   helperValidateRepeatStr,
   helperValidateWinFileName,
+  helperValidateMacAddr,
 } from '../../utils/helperReg'
 
 describe('正则测试', () => {
@@ -57,5 +58,10 @@ describe('正则测试', () => {
   it('Reg Windows文件命名非法字符', () => {
     const str = '测试文件?*.docx'
     expect(helperValidateWinFileName(str)).toBe(true)
+  })
+
+  it('Reg Mac地址', () => {
+    const str = '3C-7C-3F-C1-AB-71'
+    expect(helperValidateMacAddr(str)).toBe(true)
   })
 })

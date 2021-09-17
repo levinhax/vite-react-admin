@@ -186,3 +186,12 @@ export const helperValidateWinFileName = (value: string) => {
   }
   return false
 }
+
+// 机器mac地址
+export const helperValidateMacAddr = (value: string) => {
+  const uPattern = /^((([a-f0-9]{2}:){5})|(([a-f0-9]{2}-){5}))[a-f0-9]{2}$/i
+  if (uPattern.test(value)) {
+    return true
+  }
+  return false
+}
