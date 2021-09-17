@@ -154,6 +154,11 @@ export const microReactMenus: IRoute[] = [
             title: '树状图',
             path: '/micro2/charts/tree',
           },
+          {
+            name: 'polygonColumnDiagram',
+            title: '多边体柱图',
+            path: '/micro2/charts/polygonColumnDiagram',
+          },
         ],
       },
     ],
