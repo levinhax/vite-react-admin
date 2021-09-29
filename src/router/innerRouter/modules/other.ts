@@ -3,6 +3,7 @@ import { lazy } from 'react'
 import IRoute from '../IRoute'
 
 const OtherAnimation = lazy(() => import('@/views/Other/animation'))
+const BatteryAnimation = lazy(() => import('@/views/Other/animation/battery'))
 const OtherGallery = lazy(() => import('@/views/Other/gallery'))
 const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
 const OtherFile = lazy(() => import('@/views/Other/file'))
@@ -19,6 +20,13 @@ const routes: IRoute = {
       path: '/other/animation',
       exact: true,
       component: OtherAnimation,
+    },
+    {
+      name: 'batteryAnimation',
+      title: '充电动画',
+      path: '/other/animation/battery',
+      exact: true,
+      component: BatteryAnimation,
     },
     {
       name: 'gallery',

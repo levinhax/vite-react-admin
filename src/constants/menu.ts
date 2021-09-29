@@ -19,6 +19,11 @@ export const mainAppMenus: IRoute[] = [
         path: '/other/animation',
       },
       {
+        name: 'batteryAnimation',
+        title: '电池动画',
+        path: '/other/animation/battery',
+      },
+      {
         name: 'gallery',
         title: '画廊',
         path: '/other/gallery',
