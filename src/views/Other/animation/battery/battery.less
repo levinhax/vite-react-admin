@@ -165,20 +165,16 @@
   //   width: (@i * 100% / @n);
   // }
 
-  li:nth-child@{i} {
-    // width: 15 + random(15) + px;
-    // height: 15 + random(15) + px;
+  .g-bubbles li:nth-child(@{i}) {
+    @randomWidth: 15px;
 
-    width: 15 + @i + px;
-    height: 15 + @i + px;
+    width: @randomWidth;
+    height: @randomWidth;
 
-    width: 15px;
-    height: 15px;
     left: 15 + @i * 3 + px;
-    // left: 15 + random(70) + px;
-    top: 50%;
     transform: translate(-50%, -50%);
     animation: moveToTop 3s ease-in-out -10s infinite;
+    // animation: ~"snowani_@{n} `(-Math.random() * 4 + 8).toFixed(2)`s linear infinite";
   }
 
   .loopli(@n, (@i + 1));
@@ -261,6 +257,7 @@
     background: #00ff6f;
   }
 
+  // less语法
   .loopli(15);
 
   // scss语法
@@ -275,8 +272,6 @@
   //         animation: moveToTop #{random(6) + 3}s ease-in-out -#{random(5000)/1000}s infinite;
   //     }
   // }
-
-  // less语法
 
   @keyframes rotate {
     50% {
