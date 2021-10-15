@@ -38,6 +38,11 @@ export const mainAppMenus: IRoute[] = [
         title: '文件',
         path: '/other/file',
       },
+      {
+        name: 'otherHoc',
+        title: '高阶组件',
+        path: '/other/hoc',
+      },
     ],
   },
   {

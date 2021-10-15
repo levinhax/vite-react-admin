@@ -5,6 +5,7 @@ const breadcrumbNameMap: any = {
   '/other/gallery': '画廊',
   '/other/regexp': '正则',
   '/other/file': '文件',
+  '/other/hoc': '高阶组件',
   '/permission': '权限',
   '/permission/test': '测试页',
 }

@@ -8,6 +8,7 @@ const OtherGallery = lazy(() => import('@/views/Other/gallery'))
 const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
 const OtherFile = lazy(() => import('@/views/Other/file'))
 const OtherTest = lazy(() => import('@/views/Other/test')) // 测试页面
+const OtherHoc = lazy(() => import('@/views/Other/hoc')) // 高阶组件
 
 const routes: IRoute = {
   name: 'other',
@@ -55,6 +56,13 @@ const routes: IRoute = {
       path: '/other/test',
       exact: true,
       component: OtherTest,
+    },
+    {
+      name: 'otherHoc',
+      title: '高阶组件',
+      path: '/other/hoc',
+      exact: true,
+      component: OtherHoc,
     },
   ],
 }
