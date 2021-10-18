@@ -7,6 +7,9 @@
 
 // import { RegistrableApp } from 'qiankun'
 
+// import { helperLog } from '../utils/common'
+import * as ComUtils from '../utils/common'
+
 const apps: Array<any> = [
   {
     name: 'MICRO1_Vue2_APP',
@@ -16,6 +19,9 @@ const apps: Array<any> = [
     props: {
       // 额外参数
       prop_module: 'vite react17',
+      // 公共函数
+      // helperLog,
+      ComUtils,
     },
   },
   {
