@@ -43,6 +43,11 @@ export const mainAppMenus: IRoute[] = [
         title: '高阶组件',
         path: '/other/hoc',
       },
+      {
+        name: 'otherHook',
+        title: '常用hook',
+        path: '/other/hook',
+      },
     ],
   },
   {

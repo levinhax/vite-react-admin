@@ -9,6 +9,7 @@ const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
 const OtherFile = lazy(() => import('@/views/Other/file'))
 const OtherTest = lazy(() => import('@/views/Other/test')) // 测试页面
 const OtherHoc = lazy(() => import('@/views/Other/hoc')) // 高阶组件
+const OtherHook = lazy(() => import('@/views/Other/hook')) // 常用hook
 
 const routes: IRoute = {
   name: 'other',
@@ -63,6 +64,13 @@ const routes: IRoute = {
       path: '/other/hoc',
       exact: true,
       component: OtherHoc,
+    },
+    {
+      name: 'otherHook',
+      title: '常用hook',
+      path: '/other/hook',
+      exact: true,
+      component: OtherHook,
     },
   ],
 }
