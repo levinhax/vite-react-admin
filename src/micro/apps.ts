@@ -34,6 +34,16 @@ const apps: Array<any> = [
       prop_module: 'vite react17',
     },
   },
+  {
+    name: 'MICRO3_React_APP_VITE',
+    entry: import.meta.env.VITE_qiankun_micro_react_vite,
+    container: '#frame',
+    activeRule: '/micro3',
+    props: {
+      // 额外参数
+      prop_module: 'vite react17',
+    },
+  },
 ]
 
 export default apps

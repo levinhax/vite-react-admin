@@ -197,12 +197,35 @@ export const microReactMenus: IRoute[] = [
   },
 ]
 
+export const microReactViteMenus: IRoute[] = [
+  {
+    name: 'qiankun-micro-react-vite',
+    title: '子应用React Vite',
+    path: '/micro3',
+    icon: 'menuBlank',
+    children: [
+      {
+        name: 'home',
+        title: '主页',
+        path: '/micro3/home',
+      },
+      {
+        name: 'about',
+        title: '关于',
+        path: '/micro3/about',
+      },
+    ],
+  },
+]
+
 const menus: IRoute[] = [
   ...mainAppMenus,
   // vue2 子应用(micro1)
   ...microVueMenus,
   // react 子应用(micro2)
   ...microReactMenus,
+  // react vite 子应用(micro3)
+  ...microReactViteMenus,
 ]
 
 export default menus
