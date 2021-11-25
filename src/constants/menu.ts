@@ -174,6 +174,11 @@ export const microReactMenus: IRoute[] = [
             title: '多边体柱图',
             path: '/micro2/charts/polygonColumnDiagram',
           },
+          {
+            name: 'transverseLineChart',
+            title: '横向柱图',
+            path: '/micro2/charts/transverseLineChart',
+          },
         ],
       },
       {
