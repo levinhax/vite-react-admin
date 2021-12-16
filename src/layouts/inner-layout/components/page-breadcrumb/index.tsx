@@ -8,7 +8,7 @@ import breadcrumbNameMap from '@/constants/breadcrumb'
 //   '/dashboard': '首页',
 //   '/other': '其他',
 //   '/other/animation': '动画',
-//   '/other/gallery': '画廊',
+//   '/other/color': '色彩',
 // }
 
 function PageBreadcrumb() {

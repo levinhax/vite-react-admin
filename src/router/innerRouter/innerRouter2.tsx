@@ -8,7 +8,7 @@ import IRoute from './IRoute'
 // const Home = lazy(() => import('@/views/Home'))
 const Dashboard = lazy(() => import('@/views/Dashboard'))
 const OtherAnimation = lazy(() => import('@/views/Other/animation'))
-const OtherGallery = lazy(() => import('@/views/Other/gallery'))
+const OtherColor = lazy(() => import('@/views/Other/color'))
 
 // const routes: RouteProps[] = [
 //   {
@@ -39,11 +39,11 @@ export const routes: IRoute[] = [
     component: OtherAnimation,
   },
   {
-    name: 'otherGallery',
-    title: '画廊',
-    path: '/other/gallery',
+    name: 'otherColor',
+    title: '色彩',
+    path: '/other/color',
     exact: true,
-    component: OtherGallery,
+    component: OtherColor,
   },
 ]
 

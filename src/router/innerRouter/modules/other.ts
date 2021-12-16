@@ -4,7 +4,7 @@ import IRoute from '../IRoute'
 
 const OtherAnimation = lazy(() => import('@/views/Other/animation'))
 const BatteryAnimation = lazy(() => import('@/views/Other/animation/battery'))
-const OtherGallery = lazy(() => import('@/views/Other/gallery'))
+const OtherColor = lazy(() => import('@/views/Other/color'))
 const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
 const OtherFile = lazy(() => import('@/views/Other/file'))
 const OtherTest = lazy(() => import('@/views/Other/test')) // 测试页面
@@ -31,11 +31,11 @@ const routes: IRoute = {
       component: BatteryAnimation,
     },
     {
-      name: 'gallery',
-      title: '画廊',
-      path: '/other/gallery',
+      name: 'color',
+      title: '色彩',
+      path: '/other/color',
       exact: true,
-      component: OtherGallery,
+      component: OtherColor,
     },
     {
       name: 'otherRegexp',
