@@ -18,8 +18,8 @@ function OtherColor() {
       value: 'rgb(128, 0, 32)',
     },
     {
-      title: '波尔多红',
-      value: 'rgb(76, 0, 9)',
+      title: '克莱因蓝',
+      value: 'rgb(0, 47, 167)',
     },
     {
       title: '邦迪蓝',
