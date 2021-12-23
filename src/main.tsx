@@ -28,11 +28,9 @@ async function startApp() {
     // 启动应用
     startQiankun()
     ReactDOM.render(
-      <React.StrictMode>
-        <ConfigProvider locale={zh_CN}>
-          <App />
-        </ConfigProvider>
-      </React.StrictMode>,
+      <ConfigProvider locale={zh_CN}>
+        <App />
+      </ConfigProvider>,
       document.getElementById('root')
     )
   }
