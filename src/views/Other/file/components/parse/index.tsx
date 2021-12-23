@@ -105,8 +105,7 @@ function FileParse() {
         const data = e.target && e.target.result
         let arr = data.split('\n')
         let csvResult = arr.map((item: any) => item.split(','))
-        csvResult.pop()
-        resolve(csvResult)
+        if (csvResult[csvResult.length - 1]) resolve(csvResult)
       }
     })
   }
