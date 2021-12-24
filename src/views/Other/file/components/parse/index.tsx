@@ -119,10 +119,11 @@ function FileParse() {
     if (tableHeadSet.size !== tableHead.length) {
       message.error('请检查文件信息是否正确')
     }
+    // let reg = new RegExp('"', 'g') // 简单处理包围符
     const tableColumns: Array<any> = []
     tableHead.map((item: any) => {
       tableColumns.push({
-        title: item,
+        title: item, // item.replace(reg, '')
         dataIndex: item,
         key: item,
       })
