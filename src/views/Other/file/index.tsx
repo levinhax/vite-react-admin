@@ -13,7 +13,7 @@ function OtherFile() {
 
   return (
     <div className="file-wrapper">
-      <Tabs defaultActiveKey="2" onChange={handleTabChange}>
+      <Tabs defaultActiveKey="1" onChange={handleTabChange} destroyInactiveTabPane={true}>
         <TabPane tab="Tab 1" key="1">
           <ComDownload />
         </TabPane>
