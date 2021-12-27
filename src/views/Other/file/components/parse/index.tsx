@@ -103,7 +103,8 @@ function FileParse() {
       reader.onload = (e: any) => {
         // const data = reader.result
         const data = e.target && e.target.result
-        let arr = data.split('\n')
+        // let arr = data.split('\n')
+        let arr = data.split(/\r?\n|\r/) // 解决不同系统换行符问题
         let csvResult = arr.map((item: any) => item.split(','))
         if (csvResult[csvResult.length - 1]) resolve(csvResult)
       }
