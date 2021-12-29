@@ -1,15 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import XLSX from 'xlsx'
 import { Upload, message, Button, Table } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import './index.less'
 
 function FileParse() {
-  const [dataUploadFile, setDataUploadFile] = useState<any>()
+  const [dataUploadFile, setDataUploadFile] = useState<any>(null)
   const [dataUploadFileList, setDataUploadFileList] = useState<Array<any>>([])
+  // const [dataEncodeType, setDataEncodeType] = useState<string>('utf-8')
+  const [dataEncodeType, setDataEncodeType] = useState('utf-8')
 
   const [dataTableColumn, setDataTableColumn] = useState<Array<{ title: string; dataIndex: string; key: string }>>([])
   const [dataTableData, setDataTableData] = useState<Array<any>>([])
+
+  useEffect(() => {
+    if (dataEncodeType && dataUploadFile) {
+      file2Csv(dataUploadFile).then(tab => {
+        handle2TableData(tab)
+      })
+    }
+  }, [dataEncodeType])
 
   const props = {
     name: 'file',
@@ -39,20 +49,17 @@ function FileParse() {
       setDataUploadFileList(fileList)
     },
     beforeUpload(file: any) {
-      console.log('beforeUpload: ', file)
       setDataUploadFile(file)
 
       if (/(.xlsx|.xls)$/.test(file.name)) {
         file2Excel(file).then(tab => {
-          console.log('xlsx tab: ', tab)
           handle2TableData(tab)
         })
       }
 
       if (/(.csv|.txt)$/.test(file.name)) {
-        file2Csv(file).then(tab => {
-          console.log('csv tab: ', tab)
-          handle2TableData(tab)
+        isUtf8(file).then(encodeType => {
+          setDataEncodeType(encodeType as string)
         })
       }
 
@@ -98,8 +105,8 @@ function FileParse() {
   const file2Csv = (file: any) => {
     return new Promise(resolve => {
       const reader = new FileReader()
-      // reader.readAsText(file, 'utf-8')
-      reader.readAsText(file, 'gbk')
+      // reader.readAsText(file, 'gbk') // 默认utf-8
+      reader.readAsText(file, dataEncodeType)
       reader.onload = (e: any) => {
         // const data = reader.result
         const data = e.target && e.target.result
@@ -107,6 +114,24 @@ function FileParse() {
         let arr = data.split(/\r?\n|\r/) // 解决不同系统换行符问题
         let csvResult = arr.map((item: any) => item.split(','))
         if (csvResult[csvResult.length - 1]) resolve(csvResult)
+      }
+    })
+  }
+
+  const isUtf8 = (file: any) => {
+    return new Promise(resolve => {
+      const reader = new FileReader()
+      let encodeType: string = 'utf-8'
+      reader.readAsText(file)
+      reader.onload = (e: any) => {
+        const data = e.target && e.target.result
+        if (data.indexOf('�') === -1) {
+          encodeType = 'utf-8'
+        } else {
+          encodeType = 'gbk'
+        }
+
+        resolve(encodeType)
       }
     })
   }
@@ -139,10 +164,7 @@ function FileParse() {
       })
       return it
     })
-    console.log('excelResult: ', excelResult)
     setDataTableData(excelResult)
-
-    console.log('dataUploadFile: ', dataUploadFile)
   }
 
   return (
