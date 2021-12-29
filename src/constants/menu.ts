@@ -14,29 +14,19 @@ export const mainAppMenus: IRoute[] = [
     icon: 'menuChart',
     children: [
       {
-        name: 'animation',
-        title: '动画',
-        path: '/other/animation',
-      },
-      {
-        name: 'batteryAnimation',
-        title: '电池动画',
-        path: '/other/animation/battery',
-      },
-      {
         name: 'color',
         title: '色彩',
         path: '/other/color',
       },
       {
-        name: 'otherRegexp',
-        title: '正则',
-        path: '/other/regexp',
-      },
-      {
         name: 'otherFile',
         title: '文件',
         path: '/other/file',
+      },
+      {
+        name: 'otherVirtual',
+        title: '虚拟列表',
+        path: '/other/virtual',
       },
       {
         name: 'otherHoc',
@@ -47,6 +37,21 @@ export const mainAppMenus: IRoute[] = [
         name: 'otherHook',
         title: '常用hook',
         path: '/other/hook',
+      },
+      {
+        name: 'animation',
+        title: '动画',
+        path: '/other/animation',
+      },
+      {
+        name: 'batteryAnimation',
+        title: '电池动画',
+        path: '/other/animation/battery',
+      },
+      {
+        name: 'otherRegexp',
+        title: '正则',
+        path: '/other/regexp',
       },
     ],
   },

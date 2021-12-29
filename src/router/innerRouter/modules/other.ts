@@ -2,20 +2,56 @@ import { lazy } from 'react'
 
 import IRoute from '../IRoute'
 
-const OtherAnimation = lazy(() => import('@/views/Other/animation'))
-const BatteryAnimation = lazy(() => import('@/views/Other/animation/battery'))
 const OtherColor = lazy(() => import('@/views/Other/color'))
-const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
 const OtherFile = lazy(() => import('@/views/Other/file'))
-const OtherTest = lazy(() => import('@/views/Other/test')) // 测试页面
+const OtherVirtual = lazy(() => import('@/views/Other/virtual')) // 虚拟列表、表格
 const OtherHoc = lazy(() => import('@/views/Other/hoc')) // 高阶组件
 const OtherHook = lazy(() => import('@/views/Other/hook')) // 常用hook
+const OtherAnimation = lazy(() => import('@/views/Other/animation'))
+const BatteryAnimation = lazy(() => import('@/views/Other/animation/battery'))
+const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
+const OtherTest = lazy(() => import('@/views/Other/test')) // 测试页面
 
 const routes: IRoute = {
   name: 'other',
   title: '其他',
   path: '/other',
   children: [
+    {
+      name: 'color',
+      title: '色彩',
+      path: '/other/color',
+      exact: true,
+      component: OtherColor,
+    },
+    {
+      name: 'otherFile',
+      title: '文件',
+      path: '/other/file',
+      exact: true,
+      component: OtherFile,
+    },
+    {
+      name: 'virtual',
+      title: '虚拟列表',
+      path: '/other/virtual',
+      exact: true,
+      component: OtherVirtual,
+    },
+    {
+      name: 'otherHoc',
+      title: '高阶组件',
+      path: '/other/hoc',
+      exact: true,
+      component: OtherHoc,
+    },
+    {
+      name: 'otherHook',
+      title: '常用hook',
+      path: '/other/hook',
+      exact: true,
+      component: OtherHook,
+    },
     {
       name: 'animation',
       title: '动画',
@@ -31,13 +67,6 @@ const routes: IRoute = {
       component: BatteryAnimation,
     },
     {
-      name: 'color',
-      title: '色彩',
-      path: '/other/color',
-      exact: true,
-      component: OtherColor,
-    },
-    {
       name: 'otherRegexp',
       title: '正则',
       path: '/other/regexp',
@@ -45,32 +74,11 @@ const routes: IRoute = {
       component: OtherRegExp,
     },
     {
-      name: 'otherFile',
-      title: '文件',
-      path: '/other/file',
-      exact: true,
-      component: OtherFile,
-    },
-    {
       name: 'otherTest',
       title: '测试',
       path: '/other/test',
       exact: true,
       component: OtherTest,
-    },
-    {
-      name: 'otherHoc',
-      title: '高阶组件',
-      path: '/other/hoc',
-      exact: true,
-      component: OtherHoc,
-    },
-    {
-      name: 'otherHook',
-      title: '常用hook',
-      path: '/other/hook',
-      exact: true,
-      component: OtherHook,
     },
   ],
 }
