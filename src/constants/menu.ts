@@ -128,6 +128,18 @@ export const microVueMenus: IRoute[] = [
           },
         ],
       },
+      {
+        name: 'virtual',
+        title: '虚拟',
+        path: '/micro1/virtual',
+        children: [
+          {
+            name: 'virtualList',
+            title: '虚拟列表',
+            path: '/micro1/virtual-list',
+          },
+        ],
+      },
     ],
   },
 ]
