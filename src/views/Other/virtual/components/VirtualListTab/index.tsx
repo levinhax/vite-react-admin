@@ -24,12 +24,19 @@ function VirtualListTab() {
     }, 0)
   }, [])
 
+  const ListItem = (itemData: any) => (
+    <div>
+      {itemData.id} : {itemData.value}
+    </div>
+  )
+
   return (
     <div className="virtual-list-tab-wrapper">
       <h2 className="title">虚拟列表</h2>
 
       <div className="list-content">
-        <VirtualList listData={listData} itemSize={60} />
+        {/* <VirtualList listData={listData} itemSize={60} /> */}
+        <VirtualList listData={listData} itemSize={60} itemRender={(item: any) => ListItem(item)} />
       </div>
     </div>
   )
