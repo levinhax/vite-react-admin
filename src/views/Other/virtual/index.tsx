@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { Tabs } from 'antd'
+import ComReactVirtualized from './components/react-virtualized'
+import VirtualListTab from './components/VirtualListTab'
 
 const { TabPane } = Tabs
 
@@ -12,11 +14,11 @@ function OtherFile() {
   return (
     <div className="file-wrapper">
       <Tabs defaultActiveKey="1" onChange={handleTabChange} destroyInactiveTabPane={true}>
-        <TabPane tab="Tab 1" key="1">
-          111
+        <TabPane tab="ReactVirtualized" key="1">
+          <ComReactVirtualized />
         </TabPane>
-        <TabPane tab="Tab 2" key="2">
-          222
+        <TabPane tab="虚拟列表" key="2">
+          <VirtualListTab />
         </TabPane>
       </Tabs>
     </div>
