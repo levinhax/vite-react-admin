@@ -21,7 +21,7 @@ function VirtualList(props: IProp) {
   const [startInd, setStartInd] = useState(0) // 起始索引
   const [endInd, setEndInd] = useState(0) // 结束索引
 
-  const [bufferScale] = useState(1) // 缓冲区比例
+  // const [bufferScale] = useState(1) // 缓冲区比例
 
   useEffect(() => {
     setScreenHeight(listRef.current.clientHeight)
@@ -43,13 +43,13 @@ function VirtualList(props: IProp) {
     return Math.ceil(screenHeight / itemSize)
   }, [screenHeight, itemSize])
 
-  const aboveCount = useMemo(() => {
-    return Math.min(startInd, bufferScale * visibleCount)
-  }, [screenHeight, itemSize, startInd])
+  // const aboveCount = useMemo(() => {
+  //   return Math.min(startInd, bufferScale * visibleCount)
+  // }, [screenHeight, itemSize, startInd])
 
-  const belowCount = useMemo(() => {
-    return Math.min(listData.length - endInd, bufferScale * visibleCount)
-  }, [screenHeight, itemSize, endInd])
+  // const belowCount = useMemo(() => {
+  //   return Math.min(listData.length - endInd, bufferScale * visibleCount)
+  // }, [screenHeight, itemSize, endInd])
 
   // 偏移量
   const listTransform = useMemo(() => {
@@ -58,10 +58,10 @@ function VirtualList(props: IProp) {
 
   // 真实显示列表数据
   const visibleData = useMemo(() => {
-    // return listData.slice(startInd, Math.min(endInd, listData.length))
-    let start = startInd - aboveCount
-    let end = endInd + belowCount
-    return listData.slice(start, end)
+    return listData.slice(startInd, Math.min(endInd, listData.length))
+    // let start = startInd - aboveCount
+    // let end = endInd + belowCount
+    // return listData.slice(start, end)
   }, [startInd, endInd, screenHeight])
 
   const scrollEvent = () => {

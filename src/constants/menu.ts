@@ -49,6 +49,11 @@ export const mainAppMenus: IRoute[] = [
         path: '/other/animation/battery',
       },
       {
+        name: 'bulletChatAnimation',
+        title: '弹幕效果',
+        path: '/other/animation/bullet',
+      },
+      {
         name: 'otherRegexp',
         title: '正则',
         path: '/other/regexp',

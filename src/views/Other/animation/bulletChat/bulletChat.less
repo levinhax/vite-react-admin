@@ -1,0 +1,66 @@
+.bullet-chat-content {
+  width: 100%;
+  height: 480px;
+  display: flex;
+  background: url('../../../../assets/images/other/animation/bullet-bg.jpeg');
+  // background: linear-gradient(#fff, #000);
+  background-size: cover;
+  position: relative;
+}
+
+.g-avatar {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 120px;
+  height: 120px;
+  background: url('../../../../assets/images/other/animation/bullet-avatar.png');
+  background-size: cover;
+  animation: move 10s infinite alternate;
+}
+
+@keyframes move {
+  100% {
+    // transform: translate(calc(75vw), 0);
+    transform: translate(960px, 0);
+  }
+}
+
+.g-barrage-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  // background: radial-gradient(circle at 100px 100px, transparent 60px, #fff 80px, #fff 100%);
+  mask: radial-gradient(circle at 100px 100px, transparent 60px, #fff 80px, #fff 100%);
+  -webkit-mask: radial-gradient(circle at 100px 100px, transparent 60px, #fff 80px, #fff 100%);
+  animation: mask 10s infinite alternate;
+}
+
+@keyframes mask {
+  100% {
+    // mask-position: 75vw 0;
+    mask-position: 960px 0;
+    -webkit-mask-position: 960px 0;
+  }
+}
+
+.g-barrage {
+  position: absolute;
+  color: #fff;
+  font-size: 24px;
+  opacity: 0.8;
+}
+
+.loop(@n, @i: 1) when (@i =< @n) {
+  .g-barrage:nth-child(@{i}) {
+    color: rgb(255, 255, @i * 10);
+    top: (@i / 10 * 240px);
+    animation: move (@i * 0.2) + 10s infinite (@i * 1.5 - 1s) linear;
+  }
+
+  .loop(@n, (@i + 1));
+}
+
+.loop(10);
