@@ -11,6 +11,8 @@ import { IRoute } from '@/router/innerRouter'
 import logo from '../../../../assets/svg/logo.svg'
 import NavLink from './nav-link'
 
+import menus from '../../../../constants/menu'
+
 interface IProps {
   routeMap: IRoute[]
 }
@@ -34,19 +36,39 @@ const SiderBar: React.FC<IProps> = ({ routeMap }) => {
   const location = useLocation()
 
   // 当前激活的菜单
-  const [activeMenu, setActiveMenu] = useState('/dashboard')
+  const [activeMenu, setActiveMenu] = useState('')
 
   useEffect(() => {
-    setActiveMenu(location.pathname)
+    const currentItem = findCurrentMenu(menus, location.pathname)
+    if (!currentItem?.hiddenInMenu) {
+      setActiveMenu(location.pathname)
+    }
+    // setActiveMenu(location.pathname)
   }, [location.pathname])
 
   const handelClickMenu = (e: any) => {
-    setActiveMenu(e.key)
+    const currentItem = findCurrentMenu(menus, e.key)
+    if (!currentItem?.hiddenInMenu) {
+      setActiveMenu(e.key)
+    }
+    // setActiveMenu(e.key)
+  }
+
+  const findCurrentMenu = (menus: Array<any>, currentPath: string): any => {
+    for (let i = 0; i < menus.length; i++) {
+      const menu = menus[i]
+      const { path } = menu
+      if (path === currentPath) return menu
+
+      const currentMenu = findCurrentMenu(menu.children || [], currentPath)
+      if (currentMenu) return currentMenu
+    }
+    return null
   }
 
   // 根据路由配置生成菜单
   const getMenuItem = (route: IRoute) => {
-    const { title, path, icon, children } = route
+    const { title, path, icon, hiddenInMenu, children } = route
 
     if (children) {
       return (
@@ -56,9 +78,11 @@ const SiderBar: React.FC<IProps> = ({ routeMap }) => {
       )
     }
     return (
-      <Menu.Item key={path + ''}>
-        <NavLink path={path + ''} title={title} icon={icon} />
-      </Menu.Item>
+      !hiddenInMenu && (
+        <Menu.Item key={path + ''}>
+          <NavLink path={path + ''} title={title} icon={icon} />
+        </Menu.Item>
+      )
     )
   }
 

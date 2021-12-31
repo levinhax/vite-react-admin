@@ -7,6 +7,8 @@ const breadcrumbNameMap: any = {
   '/other/hoc': '高阶组件',
   '/other/hook': '常用hook',
   '/other/animation': '动画',
+  '/other/animation/battery': '电池动画',
+  '/other/animation/bullet': '弹幕效果',
   '/other/regexp': '正则',
   '/permission': '权限',
   '/permission/test': '测试页',

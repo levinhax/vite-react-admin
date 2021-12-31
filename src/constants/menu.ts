@@ -47,11 +47,13 @@ export const mainAppMenus: IRoute[] = [
         name: 'batteryAnimation',
         title: '电池动画',
         path: '/other/animation/battery',
+        hiddenInMenu: true,
       },
       {
         name: 'bulletChatAnimation',
         title: '弹幕效果',
         path: '/other/animation/bullet',
+        hiddenInMenu: true,
       },
       {
         name: 'otherRegexp',
