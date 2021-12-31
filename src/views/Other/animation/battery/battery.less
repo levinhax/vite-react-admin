@@ -159,6 +159,18 @@
 
 // 模拟安卓充电
 
+// .loop(@n, @i: 1) when (@i =< @n) {
+//   .g-barrage:nth-child(@{i}) {
+//     color: rgb(255, 255, @i * 10);
+//     top: (@i / 10 * 240px);
+//     animation: move (@i * 0.2) + 10s infinite (@i * 1.5 - 1s) linear;
+//   }
+
+//   .loop(@n, (@i + 1));
+// }
+
+// .loop(10);
+
 // 定义循环函数
 .loopli(@n, @i: 1) when (@i =< @n) {
   // .grid@{i} {
@@ -167,14 +179,16 @@
 
   .g-bubbles li:nth-child(@{i}) {
     @randomWidth: 15px;
+    @aniDur: ~`Math.random(6)`;
+    @aniDelay: ~`Math.random(5000)`;
 
     width: @randomWidth;
     height: @randomWidth;
 
     left: 15 + @i * 3 + px;
     transform: translate(-50%, -50%);
-    animation: moveToTop 3s ease-in-out -10s infinite;
-    // animation: ~"snowani_@{n} `(-Math.random() * 4 + 8).toFixed(2)`s linear infinite";
+    // animation: moveToTop 3s ease-in-out -10s infinite;
+    animation: moveToTop  @aniDur + 2s ease-in-out -@aniDelay * 0.01s infinite;
   }
 
   .loopli(@n, (@i + 1));
