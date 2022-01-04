@@ -6,10 +6,11 @@ const OtherColor = lazy(() => import('@/views/Other/color'))
 const OtherFile = lazy(() => import('@/views/Other/file'))
 const OtherVirtual = lazy(() => import('@/views/Other/virtual')) // 虚拟列表、表格
 const OtherHoc = lazy(() => import('@/views/Other/hoc')) // 高阶组件
-const OtherHook = lazy(() => import('@/views/Other/hook')) // 常用hook
+const OtherVideo = lazy(() => import('@/views/Other/video'))
 const OtherAnimation = lazy(() => import('@/views/Other/animation'))
 const BatteryAnimation = lazy(() => import('@/views/Other/animation/battery'))
 const BulletChatAnimation = lazy(() => import('@/views/Other/animation/bulletChat'))
+const OtherHook = lazy(() => import('@/views/Other/hook')) // 常用hook
 const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
 const OtherTest = lazy(() => import('@/views/Other/test')) // 测试页面
 
@@ -47,11 +48,11 @@ const routes: IRoute = {
       component: OtherHoc,
     },
     {
-      name: 'otherHook',
-      title: '常用hook',
-      path: '/other/hook',
+      name: 'otherVideo',
+      title: '视频',
+      path: '/other/video',
       exact: true,
-      component: OtherHook,
+      component: OtherVideo,
     },
     {
       name: 'animation',
@@ -73,6 +74,13 @@ const routes: IRoute = {
       path: '/other/animation/bullet',
       exact: true,
       component: BulletChatAnimation,
+    },
+    {
+      name: 'otherHook',
+      title: '常用hook',
+      path: '/other/hook',
+      exact: true,
+      component: OtherHook,
     },
     {
       name: 'otherRegexp',

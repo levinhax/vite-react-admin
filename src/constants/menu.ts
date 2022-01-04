@@ -34,9 +34,9 @@ export const mainAppMenus: IRoute[] = [
         path: '/other/hoc',
       },
       {
-        name: 'otherHook',
-        title: '常用hook',
-        path: '/other/hook',
+        name: 'otherVideo',
+        title: '视频',
+        path: '/other/video',
       },
       {
         name: 'animation',
@@ -54,6 +54,11 @@ export const mainAppMenus: IRoute[] = [
         title: '弹幕效果',
         path: '/other/animation/bullet',
         hiddenInMenu: true,
+      },
+      {
+        name: 'otherHook',
+        title: '常用hook',
+        path: '/other/hook',
       },
       {
         name: 'otherRegexp',
