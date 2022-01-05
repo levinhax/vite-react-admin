@@ -52,17 +52,23 @@ export const sleep = (interval: number) => new Promise(resolve => setTimeout(res
 
 // 复制内容到剪贴板
 export const copyToBoard = (value: string) => {
-  const element = document.createElement('textarea')
-  document.body.appendChild(element)
-  element.value = value
-  element.select()
-  if (document.execCommand('copy')) {
-    document.execCommand('copy')
+  if (navigator.clipboard) {
+    // clipboard api, 不兼容IE浏览器
+    navigator.clipboard.writeText(value)
+  } else {
+    // 传统方法，兼容IE浏览器
+    const element = document.createElement('textarea')
+    document.body.appendChild(element)
+    element.value = value
+    element.select()
+    if (document.execCommand('copy')) {
+      document.execCommand('copy')
+      document.body.removeChild(element)
+      return true
+    }
     document.body.removeChild(element)
-    return true
+    return false
   }
-  document.body.removeChild(element)
-  return false
 }
 
 // 平滑滚动到页面顶部
