@@ -36,6 +36,7 @@ function LiveVideo(props: IProps) {
 
       const player = (playerRef.current = Videojs(videoElement, options, () => {
         console.log('onPlayerReady')
+        player.autoplay(options.autoPlay)
         onReady && onReady(player)
       }))
       console.log('player: ', player)
