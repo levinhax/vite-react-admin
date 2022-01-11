@@ -8,7 +8,7 @@ function VirtualListTab() {
 
   useEffect(() => {
     // 记录数据生成开始时间
-    let now = Date.now()
+    console.time('initList')
     let data = [],
       len = 100000
     for (let id = 0; id < len; id++) {
@@ -19,9 +19,7 @@ function VirtualListTab() {
     }
     setListData(data)
     console.log('listData: ', listData)
-    setTimeout(() => {
-      console.log('数据生成总时间：', Date.now() - now)
-    }, 0)
+    console.timeEnd('initList')
   }, [])
 
   const ListItem = (itemData: any) => (

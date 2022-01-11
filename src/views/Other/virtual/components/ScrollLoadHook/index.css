@@ -1,0 +1,13 @@
+.scrollitem {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 1px dotted #ddd;
+  margin-top: 6px;
+}
+
+.scrollitem:first-child {
+  margin-top: 0;
+}
