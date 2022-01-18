@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import svgr from 'vite-plugin-svgr'
+// import { configManualChunk } from './config/vite/optimizer'
 
 import path from 'path'
 
@@ -47,5 +48,15 @@ export default defineConfig({
 		alias: {
 			'@': resolve('src')
 		}
-	}
+	},
+  // build: {
+  //   rollupOptions: {
+  //     output: {
+  //       manualChunks: configManualChunk,
+  //     },
+  //   },
+  //   // Turning off brotliSize display can slightly reduce packaging time
+  //   brotliSize: false,
+  //   chunkSizeWarningLimit: 2000,
+  // }
 })
