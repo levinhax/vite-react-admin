@@ -20,6 +20,12 @@ function OtherAnimation() {
       desc: '',
       path: '/other/animation/bullet',
     },
+    {
+      id: 3,
+      title: '轮播',
+      desc: '',
+      path: '/other/animation/banner',
+    },
   ])
 
   const renderList = listData.map(item => {

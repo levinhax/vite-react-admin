@@ -56,6 +56,12 @@ export const mainAppMenus: IRoute[] = [
         hiddenInMenu: true,
       },
       {
+        name: 'bannerAnimation',
+        title: '轮播',
+        path: '/other/animation/banner',
+        hiddenInMenu: true,
+      },
+      {
         name: 'otherHook',
         title: '常用hook',
         path: '/other/hook',

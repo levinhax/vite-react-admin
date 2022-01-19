@@ -10,6 +10,7 @@ const OtherVideo = lazy(() => import('@/views/Other/video'))
 const OtherAnimation = lazy(() => import('@/views/Other/animation'))
 const BatteryAnimation = lazy(() => import('@/views/Other/animation/battery'))
 const BulletChatAnimation = lazy(() => import('@/views/Other/animation/bulletChat'))
+const BannerAnimation = lazy(() => import('@/views/Other/animation/banner'))
 const OtherHook = lazy(() => import('@/views/Other/hook')) // 常用hook
 const OtherRegExp = lazy(() => import('@/views/Other/regexp'))
 const OtherTest = lazy(() => import('@/views/Other/test')) // 测试页面
@@ -74,6 +75,13 @@ const routes: IRoute = {
       path: '/other/animation/bullet',
       exact: true,
       component: BulletChatAnimation,
+    },
+    {
+      name: 'bannerAnimation',
+      title: '轮播',
+      path: '/other/animation/banner',
+      exact: true,
+      component: BannerAnimation,
     },
     {
       name: 'otherHook',

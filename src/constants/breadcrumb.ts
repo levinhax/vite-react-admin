@@ -9,6 +9,7 @@ const breadcrumbNameMap: any = {
   '/other/animation': '动画',
   '/other/animation/battery': '电池动画',
   '/other/animation/bullet': '弹幕效果',
+  '/other/animation/banner': '轮播',
   '/other/hook': '常用hook',
   '/other/regexp': '正则',
   '/permission': '权限',
