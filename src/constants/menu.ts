@@ -222,6 +222,11 @@ export const microReactMenus: IRoute[] = [
         path: '/micro2/form',
         children: [
           {
+            name: 'basicForm',
+            title: '基础表单',
+            path: '/micro2/form/basic',
+          },
+          {
             name: 'mixForm',
             title: '多表单',
             path: '/micro2/form/mixForm',
