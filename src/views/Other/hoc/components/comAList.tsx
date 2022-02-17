@@ -49,11 +49,13 @@ interface Item {
 
 interface IProp {
   data: Array<Item>
+  title?: string
 }
 
-const ComAList = ({ data }: IProp) => {
+const ComAList = ({ data, title }: IProp) => {
   return (
     <div className="list-wrapper" style={{ padding: 20, border: '1px solid #e9e9e9', display: 'inline-block' }}>
+      {title}
       {data.map((item: Item, index: number) => (
         <div key={index}>
           <div>

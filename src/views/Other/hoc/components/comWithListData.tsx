@@ -8,7 +8,7 @@ interface Item {
 
 // Component 为传入的组件，url 为每个组件对应的请求地址
 const WithListData = (Component: any, url: string) => {
-  const WithListDataComponent = () => {
+  const WithListDataComponent = (props: any) => {
     const [data, setData] = useState<Array<Item>>([])
     useEffect(() => {
       // fetch(url)
@@ -44,7 +44,7 @@ const WithListData = (Component: any, url: string) => {
       }
     }, [])
     // 将请求返回的 data 属性以 props 的形式返回给传入的 Component 组件
-    return <Component data={data} />
+    return <Component {...props} data={data} />
   }
   return WithListDataComponent
 }
