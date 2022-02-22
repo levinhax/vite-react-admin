@@ -16,3 +16,17 @@ export const helperNegativeNum = (value: string) => {
   }
   return false
 }
+
+// 金钱格式化
+export const helperFormatPrice = (num: number) => {
+  const numStr = num.toString().split('.')
+  let numInt = numStr[0]
+  let numDec = numStr.length > 1 ? '.' + numStr[1] : '.'
+  while (3 - numDec.length) numDec += '0'
+  let resultInt = ''
+  while (numInt.length > 3) {
+    resultInt = ',' + numInt.slice(-3) + resultInt
+    numInt = numInt.slice(0, -3)
+  }
+  return numInt + resultInt + numDec
+}
