@@ -71,6 +71,11 @@ export const mainAppMenus: IRoute[] = [
         title: '正则',
         path: '/other/regexp',
       },
+      {
+        name: 'otherTest',
+        title: '测试页',
+        path: '/other/test',
+      },
     ],
   },
   {

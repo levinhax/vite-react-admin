@@ -1,2 +1,16 @@
-@import "./antd-variable.less";
-@import "./antd-cover.less";
+@import './antd-variable.less';
+@import './antd-cover.less';
+
+.global-singleline-text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.global-multiline-text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; // 将对象作为弹性伸缩盒子模型显示
+  -webkit-box-orient: vertical; // 设置伸缩盒子的子元素排列方式
+  -webkit-line-clamp: 3; // 这个属性不是css的规范属性，需要组合上面两个属性，表示显示的行数
+}

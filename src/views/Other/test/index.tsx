@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button } from 'antd'
+import { Button, Divider } from 'antd'
 import { helperFilterEmptyParam } from '@/utils/helperFun'
 import { getArrFirst, isAllEqual } from '@/utils/helperArr'
 import './index.less'
@@ -44,6 +44,7 @@ function OtherTest() {
     <div className="test-wrapper">
       <h3 className="title">测试页面</h3>
       <div className="content">
+        <Divider orientation="left">函数</Divider>
         <div className="btn-container">
           <Button type="primary" onClick={handleFun1}>
             过滤空参数
@@ -54,6 +55,17 @@ function OtherTest() {
           <Button type="primary" onClick={handleFun3}>
             数组值全等
           </Button>
+        </div>
+
+        <Divider orientation="left">样式</Divider>
+        <div className="style-container">
+          <div className="global-singleline-text-ellipsis" style={{ width: 360 }}>
+            文本超出显示省略测试，文本超出显示省略测试，文本超出显示省略测试
+          </div>
+
+          <div className="global-multiline-text-ellipsis" style={{ width: 360 }}>
+            文本超出显示省略测试，文本超出显示省略测试，文本超出显示省略测试，文本超出显示省略测试，文本超出显示省略测试，文本超出显示省略测试，文本超出显示省略测试，
+          </div>
         </div>
       </div>
     </div>
