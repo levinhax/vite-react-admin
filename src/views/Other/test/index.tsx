@@ -3,6 +3,7 @@ import React from 'react'
 import { Button, Divider } from 'antd'
 import { helperFilterEmptyParam } from '@/utils/helperFun'
 import { getArrFirst, isAllEqual } from '@/utils/helperArr'
+import { debounce, throttle } from '@/utils/core'
 import './index.less'
 
 function OtherTest() {
@@ -40,6 +41,14 @@ function OtherTest() {
     console.log(isAllEqual(arr))
   }
 
+  const handleDebounce = debounce(() => {
+    console.log('防抖点击')
+  }, 500)
+
+  const handleThrottle = throttle(() => {
+    console.log('节流操作')
+  }, 2000)
+
   return (
     <div className="test-wrapper">
       <h3 className="title">测试页面</h3>
@@ -54,6 +63,16 @@ function OtherTest() {
           </Button>
           <Button type="primary" onClick={handleFun3}>
             数组值全等
+          </Button>
+        </div>
+
+        <Divider orientation="left">防抖节流</Divider>
+        <div className="btn-container">
+          <Button type="primary" onClick={handleDebounce}>
+            防抖
+          </Button>
+          <Button type="primary" onClick={handleThrottle}>
+            节流
           </Button>
         </div>
 
