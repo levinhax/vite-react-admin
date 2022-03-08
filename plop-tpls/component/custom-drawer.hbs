@@ -1,0 +1,18 @@
+import React, { useEffect, useState } from 'react'
+
+function ComDrawer() {
+  const [msg, setMsg] = useState('hello')
+
+  useEffect(() => {
+    setMsg(`hello: ${import.meta.env.VITE_APP_TITLE}`)
+  }, [])
+
+  return (
+    <div className="{{lowerCase name}}-component-wrapper">
+      <h1>{{upperCase name}} Drawer组件</h1>
+      <h2>{msg}</h2>
+    </div>
+  )
+}
+
+export default ComDrawer

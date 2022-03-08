@@ -57,3 +57,4 @@ npm run dev:mock
 - 首页
 - permission 权限测试页
 - icon 图标
+- Plop 自动生成文件
