@@ -2,11 +2,12 @@ import './style.less'
 
 import { BackTop, Layout } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 
 import service from '@/api/account'
-import InnerRouter, { initRoutes, IRoute } from '@/router/innerRouter'
-import { routesMap } from '@/router/innerRouter/initRoutes'
+// import InnerRouter, { initRoutes, IRoute } from '@/router/innerRouter'
+import { IRoute } from '@/router/innerRouter'
+// import { routesMap } from '@/router/innerRouter/initRoutes'
 
 import { findArr } from '@/utils/helperArr'
 
@@ -16,7 +17,7 @@ import HeaderBar from './components/header-bar'
 import SideBar from './components/side-bar'
 
 function InnerLayout(props: any) {
-  const history = useHistory()
+  const navigate = useNavigate()
   const location = useLocation()
   // 是否折叠侧边菜单
   const [collapse, setCollapse] = useState(false)
@@ -33,25 +34,25 @@ function InnerLayout(props: any) {
     if (import.meta.env.VITE_USE_MOCK === 'true') {
       // 使用mock数据
       if (!token) {
-        history.replace('/account/login')
+        navigate('/account/login')
       } else {
         const params = {}
         service.getUserInfo(params).then(res => {
           console.log('res: ', res.data.permission)
           // accountStore.setAccountInfo(res)
-          setRouteMap(initRoutes(res.data.permission))
+          // setRouteMap(initRoutes(res.data.permission))
         })
       }
     } else {
       if (!token) {
-        history.replace('/account/login')
+        navigate('/account/login')
       }
       setRouteMap(menus)
     }
-  }, [history])
+  }, [])
 
   useEffect(() => {
-    if (findArr(mainAppMenus, props?.location?.pathname, 'path')) {
+    if (findArr(mainAppMenus, location?.pathname, 'path')) {
       setIsMainRoute(true)
     } else {
       setIsMainRoute(false)
@@ -76,7 +77,7 @@ function InnerLayout(props: any) {
           {/* <InnerRouter /> */}
           {/* <InnerRouter routeMap={routesMap} /> */}
 
-          {isMainRoute ? <InnerRouter routeMap={routesMap} /> : <section id="frame"></section>}
+          {isMainRoute ? <Outlet /> : <section id="frame"></section>}
 
           {/* 主应用渲染区，用于挂载主应用路由触发的组件 */}
           {/* <InnerRouter routeMap={routesMap} /> */}

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Divider } from 'antd'
 import Border from '@/components/border'
 import CardItem from '@/components/card-item'
 import './index.less'
 
 function OtherAnimation() {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [listData] = useState([
     {
       id: 1,
@@ -38,7 +38,7 @@ function OtherAnimation() {
   })
 
   const handleClick = (item: any) => {
-    history.push(item.path)
+    navigate(item.path)
   }
 
   return (

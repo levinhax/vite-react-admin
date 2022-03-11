@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react'
-import { Route, RouteProps, Switch } from 'react-router-dom'
+import { Routes, Route, RouteProps } from 'react-router-dom'
 
 import PageLoading from '@/components/page-loading/pageLoading'
 
@@ -13,13 +13,11 @@ const OtherColor = lazy(() => import('@/views/Other/color'))
 // const routes: RouteProps[] = [
 //   {
 //     path: '/dashboard',
-//     exact: true,
-//     component: Dashboard,
+//     element: Dashboard,
 //   },
 //   {
 //     path: '/home',
-//     exact: true,
-//     component: Home,
+//     element: Home,
 //   },
 // ]
 
@@ -28,32 +26,29 @@ export const routes: IRoute[] = [
     name: 'dashboard',
     title: '首页',
     path: '/dashboard',
-    exact: true,
-    component: Dashboard,
+    element: Dashboard,
   },
   {
     name: 'otherAnimation',
     title: '动画',
     path: '/other/animation',
-    exact: true,
-    component: OtherAnimation,
+    element: OtherAnimation,
   },
   {
     name: 'otherColor',
     title: '色彩',
     path: '/other/color',
-    exact: true,
-    component: OtherColor,
+    element: OtherColor,
   },
 ]
 
 const InnerRouter = () => (
   <Suspense fallback={<PageLoading />}>
-    <Switch>
+    <Routes>
       {routes.map((route: RouteProps) => (
-        <Route key={route.path + ''} path={route.path} exact={route.exact} component={route.component} />
+        <Route key={route.path + ''} path={route.path} element={route.element} />
       ))}
-    </Switch>
+    </Routes>
   </Suspense>
 )
 

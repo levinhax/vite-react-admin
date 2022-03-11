@@ -3,7 +3,7 @@ import './style.less'
 import { LockOutlined, SafetyOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Col, Form, Input, message, Row } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import service from '@/api/account'
 // import request from '@/utils/request'
@@ -11,7 +11,7 @@ import { verificationCode } from '@/utils/verification-code'
 import actions from '@/shared/actions'
 
 function Login() {
-  const history = useHistory()
+  const navigate = useNavigate()
   const canvasRef = useRef(null)
   const [verCode, setVerCode] = useState('')
 
@@ -40,7 +40,7 @@ function Login() {
         token: res.token,
       })
       localStorage.setItem('token', res.token)
-      history.replace('/dashboard')
+      navigate('/dashboard')
     } else {
       if (username === 'admin' && password === 'admin123456') {
         console.log('验证成功')
@@ -48,7 +48,7 @@ function Login() {
           token: 'token_test',
         })
         localStorage.setItem('token', 'token_test')
-        history.replace('/dashboard')
+        navigate('/dashboard')
       } else {
         const params = {}
         const res = await service.getUserInfo(params)

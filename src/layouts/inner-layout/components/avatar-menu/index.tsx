@@ -3,10 +3,10 @@ import './style.less'
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons'
 import { Avatar, Dropdown, Menu, message } from 'antd'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function AvatarMenu() {
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const handleMenuClick = ({ key }: any) => {
     switch (key) {
@@ -16,7 +16,7 @@ function AvatarMenu() {
         break
       case 'logout':
         localStorage.clear()
-        history.replace('/account/login')
+        navigate('/account/login')
         break
       default:
         message.warning('没有该操作')

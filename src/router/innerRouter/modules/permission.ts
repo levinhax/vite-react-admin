@@ -13,8 +13,7 @@ const routes: IRoute = {
       name: 'test',
       title: '测试页',
       path: '/permission/test',
-      exact: true,
-      component: PermissionTest,
+      element: PermissionTest,
     },
   ],
 }

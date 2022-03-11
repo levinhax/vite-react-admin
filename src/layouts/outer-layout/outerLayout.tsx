@@ -1,13 +1,12 @@
 import './style.less'
 
 import React from 'react'
-
-import OuterRouter from '@/router/outerRouter'
+import { Outlet } from 'react-router-dom'
 
 function OuterLayout() {
   return (
     <div className="outer-layout">
-      <OuterRouter />
+      <Outlet />
     </div>
   )
 }

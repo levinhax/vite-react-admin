@@ -8,8 +8,7 @@ const route: IRoute = {
   name: 'dashboard',
   title: '首页',
   path: '/dashboard',
-  exact: true,
-  component: Dashboard,
+  element: Dashboard,
 }
 
 export default route

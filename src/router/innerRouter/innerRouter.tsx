@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { Route, RouteProps, Switch } from 'react-router-dom'
+import { Routes, Route, RouteProps } from 'react-router-dom'
 
 import PageLoading from '@/components/page-loading/pageLoading'
 
@@ -12,11 +12,11 @@ const InnerRouter = ({ routeMap }: any) => {
     const routes: IRoute[] = []
     const getRoute = (routeMap: IRoute[]) => {
       routeMap.forEach(config => {
-        const { path, name, title, exact, component, children } = config
+        const { path, name, title, element, children } = config
         if (children) {
           getRoute(children)
         } else {
-          routes.push({ path, name, title, exact, component })
+          routes.push({ path, name, title, element })
         }
       })
     }
@@ -26,11 +26,11 @@ const InnerRouter = ({ routeMap }: any) => {
 
   return (
     <Suspense fallback={<PageLoading />}>
-      <Switch>
+      <Routes>
         {getRoutes(routeMap).map((route: RouteProps) => (
-          <Route key={route.path + ''} path={route.path} exact={route.exact} component={route.component} />
+          <Route key={route.path + ''} path={route.path} element={route.element} />
         ))}
-      </Switch>
+      </Routes>
     </Suspense>
   )
 }
