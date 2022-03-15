@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
-import PageLoading from './components/page-loading/pageLoading'
 import innerRoutes from '@/router/innerRoutes'
 import outerRoutes from '@/router/outerRoutes'
 
@@ -16,13 +15,9 @@ function App() {
   }, [])
 
   return (
-    <>
-      <Router>
-        <React.Suspense fallback={<PageLoading />}>
-          <GetRoutes />
-        </React.Suspense>
-      </Router>
-    </>
+    <Router>
+      <GetRoutes />
+    </Router>
   )
 }
 

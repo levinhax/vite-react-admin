@@ -1,18 +1,3 @@
-import React from 'react'
-
-import OtherColor from '@/views/Other/color'
-import OtherFile from '@/views/Other/file'
-import OtherVirtual from '@/views/Other/virtual'
-import OtherHoc from '@/views/Other/hoc'
-import OtherVideo from '@/views/Other/video'
-import OtherAnimation from '@/views/Other/animation'
-import BatteryAnimation from '@/views/Other/animation/battery'
-import BulletChatAnimation from '@/views/Other/animation/bulletChat'
-import BannerAnimation from '@/views/Other/animation/banner'
-import OtherHook from '@/views/Other/hook'
-import OtherRegExp from '@/views/Other/regexp'
-import OtherTest from '@/views/Other/test'
-
 const routes = [
   {
     name: 'other',
@@ -23,73 +8,73 @@ const routes = [
         name: 'color',
         title: '色彩',
         path: '/other/color',
-        element: <OtherColor />,
+        element: () => import('@/views/Other/color'),
       },
       {
         name: 'otherFile',
         title: '文件',
         path: '/other/file',
-        element: <OtherFile />,
+        element: () => import('@/views/Other/file'),
       },
       {
         name: 'virtual',
         title: '虚拟列表',
         path: '/other/virtual',
-        element: <OtherVirtual />,
+        element: () => import('@/views/Other/virtual'),
       },
       {
         name: 'otherHoc',
         title: '高阶组件',
         path: '/other/hoc',
-        element: <OtherHoc />,
+        element: () => import('@/views/Other/hoc'),
       },
       {
         name: 'otherVideo',
         title: '视频',
         path: '/other/video',
-        element: <OtherVideo />,
+        element: () => import('@/views/Other/video'),
       },
       {
         name: 'animation',
         title: '动画',
         path: '/other/animation',
-        element: <OtherAnimation />,
+        element: () => import('@/views/Other/animation'),
       },
       {
         name: 'batteryAnimation',
         title: '充电动画',
         path: '/other/animation/battery',
-        element: <BatteryAnimation />,
+        element: () => import('@/views/Other/animation/battery'),
       },
       {
         name: 'bulletChatAnimation',
         title: '弹幕效果',
         path: '/other/animation/bullet',
-        element: <BulletChatAnimation />,
+        element: () => import('@/views/Other/animation/bulletChat'),
       },
       {
         name: 'bannerAnimation',
         title: '轮播',
         path: '/other/animation/banner',
-        element: <BannerAnimation />,
+        element: () => import('@/views/Other/animation/banner'),
       },
       {
         name: 'otherHook',
         title: '常用hook',
         path: '/other/hook',
-        element: <OtherHook />,
+        element: () => import('@/views/Other/hook'),
       },
       {
         name: 'otherRegexp',
         title: '正则',
         path: '/other/regexp',
-        element: <OtherRegExp />,
+        element: () => import('@/views/Other/regexp'),
       },
       {
         name: 'otherTest',
         title: '测试',
         path: '/other/test',
-        element: <OtherTest />,
+        element: () => import('@/views/Other/test'),
       },
     ],
   },
