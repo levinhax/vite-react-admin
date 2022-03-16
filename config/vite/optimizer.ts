@@ -5,20 +5,24 @@
 
 const vendorLibs: { match: string[]; output: string }[] = [
   {
-    match: ['ant-design'],
+    match: ['antd'],
     output: 'antd',
   },
   {
     match: ['echarts'],
     output: 'echarts',
   },
+  // {
+  //   match: ['xlsx'],
+  //   output: 'xlsx',
+  // },
+  // {
+  //   match: ['video.js'],
+  //   output: 'video.js',
+  // },
   {
-    match: ['xlsx'],
-    output: 'xlsx',
-  },
-  {
-    match: ['video.js'],
-    output: 'video.js',
+    match: ['faker'],
+    output: 'faker',
   },
 ]
 
