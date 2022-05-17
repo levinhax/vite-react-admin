@@ -5,6 +5,7 @@ import React from 'react'
 
 import AvatarMenu from '../avatar-menu'
 import PageBreadcrumb from '../page-breadcrumb'
+import ThemeChange from '../theme-change'
 
 interface IHeaderProps {
   collapse: boolean
@@ -26,7 +27,10 @@ const HeaderBar: React.FC<IHeaderProps> = props => {
         <PageBreadcrumb />
       </div>
 
-      <div>
+      <div className="header-bar-right">
+        <div style={{ marginRight: '18px' }}>
+          <ThemeChange />
+        </div>
         <AvatarMenu />
       </div>
     </div>
